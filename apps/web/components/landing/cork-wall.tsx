@@ -18,12 +18,8 @@ export function CorkWall() {
 
   return (
     <div className="min-h-screen bg-mr-cork p-4 md:p-8 overflow-hidden">
-      {/* Cork texture overlay */}
-      <div className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(90,58,31,0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(90,58,31,0.2) 0%, transparent 40%)',
-        }}
-      />
+      {/* Cork texture depth — uses opacity spots, no gradients per DESIGN.md */}
+      <div className="absolute inset-0 bg-mr-wood-dark/10" />
 
       <div className="relative z-10 mx-auto max-w-6xl space-y-12 md:space-y-16 pt-8">
         {SECTIONS.map((section, sectionIdx) => (
@@ -45,7 +41,6 @@ export function CorkWall() {
                 <div key={`${section.id}-${i}`} className="flex-shrink-0 snap-center">
                   <MrPolaroid
                     rotation={POLAROID_ROTATIONS[(sectionIdx * 6 + i) % POLAROID_ROTATIONS.length]}
-                    caption={`scene ${String(sectionIdx * 6 + i + 1).padStart(3, '0')}`}
                   />
                 </div>
               ))}

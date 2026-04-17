@@ -140,15 +140,22 @@ export function DeskScene() {
               </motion.div>
             </div>
 
-            {/* Scroll hint */}
+            {/* Scroll hint — handwritten arrow style */}
             <motion.div
               className="mt-12 flex justify-center"
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 2.5, ease: 'easeInOut' }}
             >
-              <div className="w-6 h-10 border-2 border-mr-paper/30 rounded-full flex justify-center pt-2">
-                <div className="w-1 h-2 bg-mr-paper/40 rounded-full" />
-              </div>
+              <svg width="24" height="40" viewBox="0 0 24 40" className="opacity-40" aria-hidden="true">
+                <path
+                  d="M12 2 C12 2, 11 18, 12 30 M6 24 C6 24, 12 32, 18 24"
+                  fill="none"
+                  stroke="var(--mr-paper)"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
             </motion.div>
           </div>
         </div>

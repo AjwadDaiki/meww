@@ -49,7 +49,7 @@ export function MrEnvelope({ className }: MrEnvelopeProps) {
 
         {/* Envelope label */}
         <p className="mt-3 text-center font-[family-name:var(--font-special-elite)] text-xs uppercase tracking-widest text-mr-ink/60">
-          submissions
+          {t('dropzone.done')}
         </p>
       </div>
 
