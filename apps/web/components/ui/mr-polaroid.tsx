@@ -2,6 +2,7 @@
 
 import { useRef, useMemo } from 'react';
 import { cn } from '@/lib/utils';
+import { DeskPolaroid } from '@/components/illustrations/desk-polaroid';
 
 type MrPolaroidProps = {
   src?: string;
@@ -27,15 +28,18 @@ export function MrPolaroid({ src, poster, caption, rotation, className }: MrPola
   return (
     <div
       className={cn(
-        'inline-block p-2 pb-10 bg-mr-paper shadow-[2px_4px_8px_rgba(26,22,20,0.25)]',
-        'transition-shadow duration-300 ease-[var(--ease-tactile)]',
-        'hover:shadow-[3px_6px_12px_rgba(26,22,20,0.35)]',
+        'relative inline-block cursor-pointer',
+        'transition-transform duration-300 ease-[var(--ease-tactile)]',
+        'hover:-translate-y-1',
         className
       )}
       style={{ transform: `rotate(${rot}deg)` }}
     >
-      <div className="relative w-36 h-44 bg-mr-paper-aged overflow-hidden">
-        {src ? (
+      <DeskPolaroid />
+
+      {/* Video/image overlay in the photo area */}
+      {src && (
+        <div className="absolute top-[6%] left-[10%] w-[80%] h-[70%] overflow-hidden">
           <video
             ref={videoRef}
             src={src}
@@ -46,15 +50,11 @@ export function MrPolaroid({ src, poster, caption, rotation, className }: MrPola
             autoPlay
             className="w-full h-full object-cover"
           />
-        ) : (
-          <div className="w-full h-full bg-mr-paper-aged" />
-        )}
-      </div>
+        </div>
+      )}
 
       {caption && (
-        <p
-          className="mt-2 text-center font-[family-name:var(--font-caveat)] text-sm text-mr-ink-blue leading-tight"
-        >
+        <p className="absolute bottom-[6%] left-0 right-0 text-center font-[family-name:var(--font-caveat)] text-xs text-mr-ink-blue">
           {caption}
         </p>
       )}

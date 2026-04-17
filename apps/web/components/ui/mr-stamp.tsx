@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { cn } from '@/lib/utils';
+import { DeskStamp } from '@/components/illustrations/desk-stamp';
 
 type StampVariant = 'red' | 'green' | 'blue';
 
@@ -12,10 +13,10 @@ type MrStampProps = {
   className?: string;
 };
 
-const VARIANT_MAP = {
-  red: 'border-mr-stamp-red text-mr-stamp-red',
-  green: 'border-mr-stamp-green text-mr-stamp-green',
-  blue: 'border-mr-ink-blue text-mr-ink-blue',
+const VARIANT_STYLES = {
+  red: 'text-mr-stamp-red',
+  green: 'text-mr-stamp-green',
+  blue: 'text-mr-ink-blue',
 } as const;
 
 function seededRandom(seed: number): number {
@@ -32,16 +33,26 @@ export function MrStamp({ label, variant = 'red', rotation, className }: MrStamp
   return (
     <div
       className={cn(
-        'inline-block px-4 py-2',
-        'border-2 rounded-sm',
-        'font-[family-name:var(--font-cormorant)] font-bold italic text-lg uppercase tracking-wider',
-        'opacity-85',
-        VARIANT_MAP[variant],
+        'relative inline-block cursor-pointer',
+        'transition-transform duration-300 ease-[var(--ease-tactile)]',
+        'hover:-translate-y-0.5',
         className
       )}
       style={{ transform: `rotate(${rot}deg)` }}
     >
-      {label}
+      <DeskStamp variant={variant} />
+
+      {/* Label text overlay */}
+      <span
+        className={cn(
+          'absolute inset-0 flex items-center justify-center',
+          'font-[family-name:var(--font-cormorant)] font-bold italic text-base uppercase tracking-wider',
+          'opacity-85',
+          VARIANT_STYLES[variant]
+        )}
+      >
+        {label}
+      </span>
     </div>
   );
 }

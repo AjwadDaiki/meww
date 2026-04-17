@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { cn } from '@/lib/utils';
+import { DeskPostit } from '@/components/illustrations/desk-postit';
 
 type PostitColor = 'yellow' | 'pink';
 
@@ -11,11 +12,6 @@ type MrPostitProps = {
   rotation?: number;
   className?: string;
 };
-
-const COLOR_MAP = {
-  yellow: 'bg-mr-postit',
-  pink: 'bg-mr-postit-pink',
-} as const;
 
 function seededRandom(seed: number): number {
   const x = Math.sin(seed * 7.3) * 10000;
@@ -31,16 +27,17 @@ export function MrPostit({ text, color = 'yellow', rotation, className }: MrPost
   return (
     <div
       className={cn(
-        'w-36 p-3',
-        COLOR_MAP[color],
-        'shadow-[1px_2px_6px_rgba(26,22,20,0.2)]',
-        'transition-shadow duration-300 ease-[var(--ease-tactile)]',
-        'hover:shadow-[2px_4px_10px_rgba(26,22,20,0.3)]',
+        'relative inline-block w-36',
+        'transition-transform duration-300 ease-[var(--ease-tactile)]',
+        'hover:-translate-y-1',
         className
       )}
       style={{ transform: `rotate(${rot}deg)` }}
     >
-      <p className="font-[family-name:var(--font-caveat)] text-base text-mr-ink leading-snug">
+      <DeskPostit color={color} />
+
+      {/* Text overlay */}
+      <p className="absolute inset-0 flex items-center justify-center px-4 pt-2 pb-4 font-[family-name:var(--font-caveat)] text-base text-mr-ink leading-snug text-center">
         {text}
       </p>
     </div>

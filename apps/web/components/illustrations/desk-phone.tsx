@@ -44,7 +44,6 @@ export function DeskPhone({ className, width = 112, height = 148 }: DeskPhonePro
         opacity="0.15"
         stroke="var(--mr-paper)"
         strokeWidth="1"
-        opacity="0.2"
       />
       {/* Dial circle */}
       <circle
