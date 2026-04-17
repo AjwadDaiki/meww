@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "stripe": {
+      "type": "http",
+      "url": "https://mcp.stripe.com"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp", "--headless"]
+    },
+    "next-devtools": {
+      "command": "npx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    }
+  }
+}
