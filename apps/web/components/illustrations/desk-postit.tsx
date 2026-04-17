@@ -14,8 +14,8 @@ const FILL_MAP = {
 
 export function DeskPostit({ color = 'yellow', className, width = 144, height = 136 }: DeskPostitProps) {
   const fill = FILL_MAP[color];
-  // Shadow fill is slightly darker
-  const shadowFill = color === 'yellow' ? '#d4bf52' : '#c88aa5';
+  // Shadow: same fill at lower opacity, not a separate hex
+  const shadowFill = fill;
 
   return (
     <svg

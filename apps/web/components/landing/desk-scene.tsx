@@ -162,8 +162,9 @@ export function DeskScene() {
               </motion.div>
 
               <div className="flex justify-center items-center min-h-[200px]">
-                <p className="font-[family-name:var(--font-special-elite)] text-mr-paper/40 text-xs uppercase tracking-[0.2em]">
-                  scene . 001 . take 01
+                {/* Decorative typewriter label, not user-facing copy */}
+                <p className="font-[family-name:var(--font-special-elite)] text-mr-paper/40 text-xs uppercase tracking-[0.2em]" aria-hidden="true">
+                  SCENE &middot; 001 &middot; TAKE 01
                 </p>
               </div>
 
@@ -216,7 +217,7 @@ export function DeskScene() {
                   d="M12 2 C12 2, 11 18, 12 30 M6 24 C6 24, 12 32, 18 24"
                   fill="none"
                   stroke="var(--mr-paper)"
-                  strokeWidth="1.5"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
