@@ -8,7 +8,7 @@
 @theme {
   /* Background bureau */
   --color-mr-wood-dark: #5a3a1f;
-  --color-mr-wood-mid: #8b5a2b;
+  --color-mr-wood-mid: #9c6b34;
   --color-mr-wood-light: #c49764;
   --color-mr-cork: #a07846;
 
@@ -20,10 +20,10 @@
   /* Encres et stylos */
   --color-mr-ink: #1a1614;
   --color-mr-ink-blue: #2b4a6f;
-  --color-mr-ink-red: #c73e1d;
+  --color-mr-ink-red: #d63e1d;
 
   /* Post-its et accents */
-  --color-mr-postit: #e8d56c;
+  --color-mr-postit: #f4d56a;
   --color-mr-postit-pink: #e8a5c0;
 
   /* Etats UI */
@@ -43,7 +43,7 @@
 :root {
   /* Raw CSS variables for non-Tailwind usage */
   --mr-wood-dark: #5a3a1f;
-  --mr-wood-mid: #8b5a2b;
+  --mr-wood-mid: #9c6b34;
   --mr-wood-light: #c49764;
   --mr-cork: #a07846;
   --mr-paper: #f4ead5;
@@ -51,8 +51,8 @@
   --mr-paper-shadow: #d9c9a8;
   --mr-ink: #1a1614;
   --mr-ink-blue: #2b4a6f;
-  --mr-ink-red: #c73e1d;
-  --mr-postit: #e8d56c;
+  --mr-ink-red: #d63e1d;
+  --mr-postit: #f4d56a;
   --mr-postit-pink: #e8a5c0;
   --mr-stamp-red: #a82a1c;
   --mr-stamp-green: #4a6b3a;

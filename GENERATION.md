@@ -152,7 +152,7 @@ function buildPrompt(category: any, order: any): string {
 import { NextRequest, NextResponse } from 'next/server';
 import { Order } from '@/lib/db/models/order';
 import { connectDb } from '@/lib/db';
-import { downloadAndUploadToR2 } from '@/lib/storage';
+import { storage } from '@/lib/storage';
 import { deliveryQueue } from '@/lib/queue';
 import crypto from 'crypto';
 
@@ -172,19 +172,20 @@ export async function POST(req: NextRequest) {
     const videoUrl = Array.isArray(payload.output) ? payload.output[0] : payload.output;
 
     try {
-      // Download from Replicate (their URLs are temporary), upload to our R2
-      const r2Result = await downloadAndUploadToR2({
-        sourceUrl: videoUrl,
-        destinationKey: `videos/${order.shortId}.mp4`,
-      });
+      // Download from Replicate (their URLs are temporary), save to VPS local disk
+      const result = await storage.put(
+        `videos/${order.shortId}.mp4`,
+        await fetch(videoUrl).then(r => r.arrayBuffer()),
+        'video/mp4'
+      );
 
       order.status = 'done';
       order.output = {
-        videoUrl: r2Result.publicUrl,
+        videoUrl: result.signedUrl,
         videoFilename: `${order.shortId}.mp4`,
-        durationSeconds: r2Result.duration || 5,
-        resolution: r2Result.resolution || '720p',
-        sizeBytes: r2Result.sizeBytes,
+        durationSeconds: 5,
+        resolution: '720p',
+        sizeBytes: result.sizeBytes,
       };
       order.generation.completedAt = new Date();
       await order.save();
@@ -192,11 +193,11 @@ export async function POST(req: NextRequest) {
       // Enqueue delivery email
       await deliveryQueue.add('send', { orderId: order._id.toString() });
 
-      console.log(`Order ${order.shortId} complete, video at ${r2Result.publicUrl}`);
+      console.log(`Order ${order.shortId} complete, video saved locally`);
     } catch (err) {
-      console.error('R2 upload failed:', err);
+      console.error('Local storage write failed:', err);
       order.status = 'failed';
-      order.generation.errorMessage = 'R2 upload failed';
+      order.generation.errorMessage = 'Storage write failed';
       await order.save();
     }
   } else if (payload.status === 'failed') {
@@ -252,71 +253,54 @@ CMD ["pnpm", "worker"]
 
 ## Stockage des vidéos
 
-### Cloudflare R2
+### VPS Local Disk (V1)
 
 **Pourquoi :**
-- Compatible S3 API
-- **Zéro egress cost** (le coût de lire les vidéos qu'on a stockées)
-- Storage pas cher ($0.015 / GB / mois)
-- CDN inclus
+- Zero cloud dependency en V1
+- Controle total, pas de vendor lock-in
+- Nginx sert les fichiers avec signed URLs
+- Migration vers R2 possible plus tard via interface abstraite
 
-### Structure
+**Backup plan :** Rclone sync quotidien vers Hetzner Storage Box (3EUR/mois 1TB). 14j local, 90j distant.
+
+### Structure disque VPS
 
 ```
-meowreel-videos/
-├── videos/
-│   ├── MR-4A7X2K.mp4
-│   ├── MR-8Y3P1Z.mp4
-│   └── ...
-├── previews/           # previews publics pour catégories
-│   ├── midnight-porch-musician.mp4
-│   └── ...
-└── photos-originals/   # (optionnel, purge après 30j)
-    └── ...
+/var/meowreel/data/
+├── uploads/<YYYY>/<MM>/<DD>/<uuid>.jpg    # photos originales (purge 30j)
+├── videos/<shortId>.mp4                    # vidéos livrées (purge 90j)
+└── previews/<category-slug>.webm           # previews catégories (permanent)
 ```
+
+Docker mount : `/var/meowreel/data` -> `/data` dans les containers.
+En dev local : `./data/` a la racine du projet.
 
 ### Retention policy
 
+- **Photos originales** : purge apres 30 jours (GDPR + espace)
 - **Vidéos livrées** : garde 90 jours (permet re-download par user)
-- **Photos originales** : purge après 30 jours (GDPR + coût)
 - **Previews catégories** : permanent
 
-### Upload script
+### URLs signées
+
+Les vidéos sont servies via Nginx (ou handler Next.js) avec signed URLs :
+`https://meowreel.com/v/MR-XXXX.mp4?t=<signature>`
+
+Signature = HMAC SHA256 avec TTL 48h (cf DATABASE.md section download tokens).
+
+### Interface storage abstraite
 
 ```typescript
-// lib/storage.ts
-
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
-
-const s3 = new S3Client({
-  region: 'auto',
-  endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: process.env.R2_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
-  },
-});
-
-export async function downloadAndUploadToR2({
-  sourceUrl,
-  destinationKey,
-}: { sourceUrl: string; destinationKey: string }) {
-  const response = await fetch(sourceUrl);
-  const buffer = Buffer.from(await response.arrayBuffer());
-
-  await s3.send(new PutObjectCommand({
-    Bucket: process.env.R2_BUCKET,
-    Key: destinationKey,
-    Body: buffer,
-    ContentType: 'video/mp4',
-    CacheControl: 'public, max-age=31536000, immutable',
-  }));
-
-  return {
-    publicUrl: `${process.env.R2_PUBLIC_URL}/${destinationKey}`,
-    sizeBytes: buffer.byteLength,
-  };
+// lib/storage/types.ts
+interface StorageBackend {
+  put(key: string, data: ArrayBuffer, contentType: string): Promise<StorageResult>;
+  get(key: string): Promise<Buffer | null>;
+  delete(key: string): Promise<void>;
+  getSignedUrl(key: string, ttlSeconds?: number): string;
 }
+
+// lib/storage/local.ts  — implémentation VPS disk (V1)
+// lib/storage/r2.ts     — stub pour migration future (unused V1)
 ```
 
 ---

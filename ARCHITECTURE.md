@@ -17,11 +17,11 @@
 | Paiement | **Stripe Checkout** | Apple/Google Pay natifs, 0 PCI |
 | Génération IA | **Replicate API** (Seedance 2.0 Fast + fallback Wan 2.2) | Meilleur modèle I2V, API simple |
 | Email | **MailerLite** API | Livraison vidéo + campagnes marketing |
-| Storage | VPS local + **Cloudflare R2** pour vidéos | R2 = 0 egress cost, critical |
+| Storage | **VPS local disk** + Nginx signed URLs | Zero dependency cloud storage V1, swap to R2 later if needed |
 | i18n | **next-intl** | Standard Next.js, type-safe |
 | Analytics | **Plausible** self-hosted | Pas de Google Analytics, RGPD clean |
 | Monitoring | **Sentry** (erreurs) + **Better Stack** (uptime) | Minimum vital |
-| Hosting | **VPS OVH/Hetzner** + Docker Compose | Tu héberges déjà chez toi |
+| Hosting | **VPS Hetzner** (CX22/CX32) + Docker Compose | Self-hosted, Nuremberg/Falkenstein |
 
 ---
 
@@ -232,12 +232,9 @@ STRIPE_PUBLISHABLE_KEY=pk_live_...
 # Replicate
 REPLICATE_API_TOKEN=r8_...
 
-# Cloudflare R2
-R2_ACCOUNT_ID=...
-R2_ACCESS_KEY_ID=...
-R2_SECRET_ACCESS_KEY=...
-R2_BUCKET=meowreel-videos
-R2_PUBLIC_URL=https://videos.meowreel.com
+# File Storage (VPS local disk)
+STORAGE_DATA_DIR=/data                    # Docker volume mount from /var/meowreel/data
+STORAGE_SIGNING_SECRET=...                # HMAC secret for signed URLs (same as ORDER_URL_SIGNING_SECRET)
 
 # MailerLite
 MAILERLITE_API_KEY=...

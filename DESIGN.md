@@ -6,6 +6,74 @@
 
 ---
 
+## Visual Treatment — Cartoon Illustré
+
+**Style cible** : cartoon illustré adulte, entre Duolingo (personnalité, rondeur), Studio Ghibli (chaleur, détail, warm tones), Notion illustrations (clean, professional), et bande dessinée européenne ligne claire (Tintin, Moebius époque jeunesse). **PAS** kawaii japonais, **PAS** corporate flat illustration vide.
+
+### Règles techniques SVG
+
+- **Tout en SVG inline** pour les objets (polaroid, post-it, tampon, enveloppe, téléphone, machine à écrire, projecteur, carnet)
+- **Line weight** : outlines 2.5px black #1a1614, pas d'ombres lourdes
+- **Fill** : couleurs pleines depuis la palette DESIGN.md, pas de gradient
+- **Shading** : cel-shading simple, 1 ton d'ombre max par objet, jamais de dégradé réaliste
+- **Corners** : légèrement arrondis (radius 2-4px sur les edges des objets sauf bords de papier qui peuvent rester droits)
+- **Grain** : texture papier légère en overlay sur les surfaces de fond, pas sur les objets
+- **Personnalité** : les objets ont chacun une petite asymétrie charmante (le tampon a le bord légèrement ondulé, le post-it est pas droit, etc.)
+
+### Organisation fichiers SVG
+
+Chaque SVG est dans son propre fichier TSX dans `components/illustrations/` :
+- `DeskEnvelope.tsx`, `DeskPolaroid.tsx`, `DeskPostit.tsx`, `DeskStamp.tsx`
+- `DeskPhone.tsx`, `DeskNotebook.tsx`, `DeskProjector.tsx`
+- `GuidingHand.tsx`, `GuideArrow.tsx`, `StepBadge.tsx`, `Checkmark.tsx`
+
+On peut swap un SVG à la fois quand on upgrade vers hand-drawn.
+
+### Backgrounds
+
+Les backgrounds (bureau bois, mur liège) sont générés UNE FOIS via Replicate (Flux Schnell) en style cartoon, puis hardcodés dans `public/textures/`. Script : `pnpm generate:assets`.
+
+Plus aucune photo détourée d'objet réel, plus de photo stock Unsplash, plus de shooting perso. Tout est SVG illustré custom ou asset généré Replicate cartoon style.
+
+---
+
+## UX Affordances
+
+### 1. Flèche manuscrite de guidage
+
+SVG path qui se trace depuis le milieu de l'écran vers l'enveloppe au chargement. Texte handwritten Caveat à côté : clé i18n `hero.cta` ("Commence ici !"). Disparaît en fade après 3s ou dès interaction user.
+
+### 2. Copy direct sur l'enveloppe
+
+Texte "DÉPOSE LA PHOTO DE TON CHAT" directement sur l'enveloppe, police display grande et lisible. Sous-label avec les formats acceptés. Hover : l'enveloppe lift de 4px + légère pulsation (1.5s loop).
+
+### 3. Numérotation implicite du flow
+
+Badges cercles numérotés 1/2/3 dans le coin des éléments clés :
+- Badge "1" sur l'enveloppe
+- Badge "2" apparaît sur le mur après upload
+- Badge "3" apparaît sur le tampon après sélection catégorie
+
+Style badge : cercle crème `--mr-paper` avec bordure épaisse noire `--mr-ink`, chiffre en Cormorant Garamond bold.
+
+### 4. Hover states évidents
+
+Tous les éléments cliquables : `cursor-pointer` + lift 2-4px + shadow qui s'accentue. Éléments complétés : checkmark vert SVG avec animation de trace.
+
+### 5. Mini-animation de guidage
+
+Pendant les 4 premières secondes, une main cartoon SVG fait un geste de "drop" au-dessus de l'enveloppe. Disparaît dès interaction ou après 4s.
+
+### 6. État page selon le step
+
+- **Avant upload** : éléments non-actuels (mur, tampon) grisés à 40% opacity
+- **Après upload** : mur passe à 100% opacity + badge "2" apparaît
+- **Après catégorie** : tampon passe à 100% + badge "3"
+
+Transitions smooth avec ease-out custom sur 0.6s.
+
+---
+
 ## Le concept en une phrase
 
 **Tu n'arrives pas sur un site. Tu arrives sur le bureau d'une casting director d'Hollywood, vu de dessus, où chaque polaroid qu'elle a épinglé au mur est une mini-vidéo qui boucle comme dans la Daily Prophet de Harry Potter.**
@@ -168,7 +236,7 @@ Si le device est trop pauvre (vieux Android, iOS 12, ou bande passante naze) :
 :root {
   /* Background bureau */
   --mr-wood-dark:   #5a3a1f;  /* bois foncé (ombres du bureau) */
-  --mr-wood-mid:    #8b5a2b;  /* bois moyen */
+  --mr-wood-mid:    #9c6b34;  /* bois moyen (plus chaud pour cartoon) */
   --mr-wood-light:  #c49764;  /* bois clair (reflets) */
   --mr-cork:        #a07846;  /* liège (mur arrière) */
 
@@ -180,10 +248,10 @@ Si le device est trop pauvre (vieux Android, iOS 12, ou bande passante naze) :
   /* Encres et stylos */
   --mr-ink:         #1a1614;  /* encre noire (annotations, titres) */
   --mr-ink-blue:    #2b4a6f;  /* bleu stylo bic */
-  --mr-ink-red:     #c73e1d;  /* rouge tampon, soulignage important */
+  --mr-ink-red:     #d63e1d;  /* rouge tampon (plus vif pour cartoon) */
 
   /* Post-its et accents */
-  --mr-postit:      #e8d56c;  /* jaune post-it */
+  --mr-postit:      #f4d56a;  /* jaune post-it (plus vif pour cartoon) */
   --mr-postit-pink: #e8a5c0;  /* rose post-it (alt) */
 
   /* États UI */
@@ -375,41 +443,34 @@ On ne fait pas une "version mobile du bureau". On fait une **vue alternative** q
 
 ## Assets à produire
 
-### Photos réelles à shooter ou sourcer
+### Backgrounds cartoon (générés Replicate, run 1x)
 
-- [ ] Texture bureau bois (1 photo hi-res, 3840×2160 min)
-- [ ] Texture liège mur (1 photo)
-- [ ] Papier crème texture (pour polaroids, documents)
-- [ ] Enveloppe kraft (A4, déchirée sur le dessus)
-- [ ] Carnet moleskine ouvert (2 pages blanches)
-- [ ] Téléphone à cadran noir (Bakelite, vue 3/4)
-- [ ] Tasse blanche avec ombre de rond café
-- [ ] Post-its jaunes vierges (pour superposer le texte)
-- [ ] Pellicule 16mm coupée (bouts, plusieurs tailles)
-- [ ] Stylo bic noir et bleu
-- [ ] Tampon encreur (pour animer)
-- [ ] Trombones, agrafes, épingles
+- [ ] Texture bureau bois cartoon (2048x1536, Flux Schnell, style Ghibli/Tintin)
+- [ ] Texture mur liège cartoon (2048x1536, même style)
+- [ ] Texture papier crème (overlay subtil pour grain)
 
-**Sources :**
-- Unsplash / Pexels (search: "vintage office flat lay", "creative desk")
-- Shooting perso sur ton propre bureau à Nice (fais-le, ça coûte 1h)
-- Detourage Photoshop pour chaque objet (PSD + PNG transparent)
-- AI upscaling + cleanup si nécessaire
+Script : `pnpm generate:assets` (scripts/generate-assets.ts)
 
-### Illustrations SVG custom
+### SVG illustrés custom (components/illustrations/)
 
-- [ ] Projecteur 16mm (vue 3/4, animable : bobines qui tournent)
-- [ ] Écran de projection (rectangle blanc cassé avec bordure métal)
-- [ ] Machine à écrire (vue de face, touches visibles)
-- [ ] Flèche handwritten (SVG path pour animation)
-- [ ] Annotations manuscrites (SVG text-path pour chaque annotation)
+Tous en ligne claire 2.5px, fills plats, cel-shading simple :
+
+- [ ] DeskEnvelope.tsx (enveloppe kraft ouverte, plis, tampon)
+- [ ] DeskPolaroid.tsx (cadre polaroid, pin, ombre)
+- [ ] DeskPostit.tsx (post-it avec coin replié, ombre, plis)
+- [ ] DeskStamp.tsx (tampon encreur, bord ondulé)
+- [ ] DeskPhone.tsx (téléphone à cadran Bakelite)
+- [ ] DeskNotebook.tsx (carnet ouvert 2 pages)
+- [ ] GuidingHand.tsx (main ligne claire, index pointé)
+- [ ] GuideArrow.tsx (flèche manuscrite animée)
+- [ ] StepBadge.tsx (badge cercle numéroté)
+- [ ] Checkmark.tsx (coche verte animée)
 
 ### Fonts
 
-- [ ] Editorial New (Pangram Pangram, free for personal, license for commercial ~$50)
-- [ ] Caveat (Google Fonts, free)
-- [ ] Special Elite (Google Fonts, free)
-- [ ] OU version premium : Canela trial / license (~$80-200 pour desktop web)
+- [ ] Caveat (Google Fonts, free) — handwritten
+- [ ] Cormorant Garamond (Google Fonts, free) — display
+- [ ] Special Elite (Google Fonts, free) — typewriter
 
 ### Vidéos polaroids catégories
 
@@ -452,7 +513,7 @@ Le bureau n'est pas statique. Il **évolue** selon où l'user est dans le funnel
 ## Anti-patterns à éviter
 
 - ❌ **Gradients SaaS** : pas un seul gradient sur le site. Que des textures.
-- ❌ **Icons pack générique** (Heroicons, Lucide, Feather) : toutes les icônes sont des **photos détourées d'objets réels** ou des illustrations custom
+- ❌ **Icons pack générique** (Heroicons, Lucide, Feather) : tout est en **SVG illustré cartoon custom** dans components/illustrations/
 - ❌ **Emojis dans l'UI** : jamais (sauf email subject lines, 1 max)
 - ❌ **Fonts SaaS** (Inter seul, Space Grotesk, Satoshi solo) : toujours mixer avec handwritten + serif
 - ❌ **Bordures arrondies partout** : on a des vrais objets, ils ont les bords qu'ils ont

@@ -16,7 +16,7 @@ Stack retenue :
 - Stripe Checkout (Apple Pay + Google Pay)
 - Replicate API (Seedance 2.0 Fast + Wan 2.2 I2V fallback)
 - MailerLite pour emails
-- Cloudflare R2 pour stockage vidéos
+- VPS local disk pour stockage assets (signed URLs, zero cloud storage V1)
 - next-intl pour i18n (FR / EN / ES)
 - Docker Compose pour déploiement VPS
 
@@ -30,7 +30,7 @@ Dans l'ordre :
 2. `ARCHITECTURE.md` — stack, structure, flow
 3. `DATABASE.md` — schémas MongoDB (source of truth)
 4. `FEATURES.md` — specs détaillées des flows
-5. `BRAND.md` — DA & ton (critique pour tout code UI)
+5. `DESIGN.md` — DA complète (autorité finale sur le visuel, remplace BRAND.md)
 6. `PAYMENT.md` — intégration Stripe
 7. `GENERATION.md` — pipeline Replicate
 8. `I18N.md` — stratégie multi-langue
@@ -177,11 +177,18 @@ export async function POST(req: NextRequest) {
 - **Idempotent** : relancer un job avec les mêmes inputs ne doit rien casser
 - **Logger toute étape importante** (Pino ou console structured)
 - **Retries configurés** : 3 tentatives avec backoff exponentiel par défaut
-- **Timeout sur les appels externes** (Replicate, R2) : 60s max
+- **Timeout sur les appels externes** (Replicate, storage) : 60s max
 
 ---
 
 ## Contraintes critiques (non-négociables)
+
+### Storage
+
+- ✅ **Tous les assets user restent sur VPS, jamais de dépendance cloud storage en V1**
+- ✅ **Interface abstraite** : lib/storage/ avec backend swappable (local V1, R2 plus tard)
+- ✅ **Signed URLs** pour tous les assets user-facing (HMAC SHA256, TTL 48h)
+- ❌ **Ne JAMAIS** servir un asset user sans signature valide
 
 ### Sécurité
 
