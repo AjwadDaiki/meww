@@ -9,25 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^15",
-    "react": "^19",
-    "react-dom": "^19",
-    "next-intl": "^4",
+    "clsx": "^2",
     "mongoose": "^8",
-    "zod": "^3",
     "motion": "^12",
     "nanoid": "^5",
-    "clsx": "^2",
-    "tailwind-merge": "^3"
+    "next": "^15",
+    "next-intl": "^4",
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwind-merge": "^3",
+    "zod": "^3"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "postcss": "^8",
-    "tsx": "^4"
+    "replicate": "^1.4.0",
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4",
+    "tsx": "^4",
+    "typescript": "^5"
   }
 }
