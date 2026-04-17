@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "MeowReel Studios — Tu gato, la estrella",
+    "description": "Convierte la foto de tu gato en un video viral con IA en 90 segundos. 0,99EUR. Entregado por email."
+  },
+  "nav": {
+    "title": "MeowReel",
+    "subtitle": "Today's castings",
+    "location": "Nice, France — Est. 2026",
+    "sections": {
+      "trending": "Trending",
+      "music": "Musica",
+      "dance": "Baile",
+      "cinematic": "Cine",
+      "moments": "Momentos"
+    }
+  },
+  "hero": {
+    "title": "Tu gato.",
+    "titleAccent": "La estrella.",
+    "subtitle": "Una pelicula de 5 segundos. El papel que siempre espero.",
+    "cta": "Enviar al casting",
+    "price": "0,99EUR por escena, pago en 1 toque"
+  },
+  "upload": {
+    "dropzone": {
+      "default": "Arrastra la foto de tu gato aqui",
+      "dragging": "Suelta para enviar",
+      "uploading": "Subiendo...",
+      "done": "Screen test recibido"
+    },
+    "hint": "JPG, PNG, HEIC — min 512px",
+    "error": {
+      "tooLarge": "Foto demasiado pesada (max 10 MB)",
+      "wrongFormat": "Formato no soportado",
+      "tooSmall": "Foto demasiado pequena (min 512x512)"
+    }
+  },
+  "categories": {
+    "sections": {
+      "trending": "Trending",
+      "music": "Musica",
+      "dance": "Baile",
+      "cinematic": "Cine",
+      "moments": "Momentos"
+    },
+    "previewCta": "Vista previa"
+  },
+  "bundles": {
+    "solo": {
+      "name": "Solo",
+      "count": "1 escena",
+      "perUnit": "0,99EUR por escena"
+    },
+    "trio": {
+      "name": "Trio",
+      "count": "3 escenas",
+      "perUnit": "0,83EUR por escena",
+      "badge": "Popular"
+    },
+    "ten": {
+      "name": "Casting Call",
+      "count": "10 escenas",
+      "perUnit": "0,70EUR por escena"
+    }
+  },
+  "checkout": {
+    "action": "Accion",
+    "processing": "El director prepara la escena...",
+    "loading": {
+      "messages": [
+        "El director prepara la iluminacion...",
+        "Maquillaje en curso para el talento...",
+        "El director de fotografia encuadra la toma...",
+        "Silencio en el set...",
+        "Rodando...",
+        "Accion.",
+        "El editor perfecciona el corte...",
+        "Casi listo para la proyeccion..."
+      ]
+    }
+  },
+  "finalCut": {
+    "title": "Eso es un corte.",
+    "subtitle": "Tu video esta listo.",
+    "download": "Descargar el montaje final",
+    "share": "Compartir",
+    "crossSellTitle": "Y ahora que?",
+    "crossSellHint": "Tu gato acaba de arrasar con el papel de {category}. Que tal probarlo como {newCategory}?"
+  },
+  "postits": {
+    "spielberg": "El Sr. Spielberg llamo 3 veces",
+    "lawyers": "Consultar abogados sobre el caso Minou",
+    "pintard": "Reunion con la Sra. Pintard el jueves",
+    "dumoulin": "NUNCA aceptar al gato de la Sra. Dumoulin",
+    "price": "0,99EUR por escena, pago en 1 toque"
+  },
+  "phone": {
+    "label": "Linea 2 — urgente",
+    "notification": "Nuevo cast: {name}, hace {time}"
+  },
+  "errors": {
+    "generation": {
+      "title": "Corten.",
+      "message": "La escena no convencio al director. Otra toma?",
+      "retry": "Segunda toma, 0,49EUR"
+    },
+    "notFound": {
+      "title": "Esta escena fue cortada en el montaje.",
+      "cta": "Volver al set"
+    },
+    "timeout": {
+      "title": "La produccion esta tardando mas de lo previsto.",
+      "message": "Te enviaremos el video en cuanto este listo."
+    }
+  },
+  "footer": {
+    "tagline": "Hecho en Niza, Francia.",
+    "copyright": "MeowReel Studios, 2026.",
+    "links": {
+      "cgv": "Condiciones de venta",
+      "cgu": "Aviso legal",
+      "privacy": "Privacidad",
+      "contact": "Soporte"
+    }
+  }
+}

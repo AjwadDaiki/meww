@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "title": "MeowReel Studios — Ton chat, en vedette",
+    "description": "Transforme la photo de ton chat en video IA virale en 90 secondes. 0,99EUR. Livre par email."
+  },
+  "nav": {
+    "title": "MeowReel",
+    "subtitle": "Today's castings",
+    "location": "Nice, France — Est. 2026",
+    "sections": {
+      "trending": "Trending",
+      "music": "Musique",
+      "dance": "Danse",
+      "cinematic": "Cinema",
+      "moments": "Moments"
+    }
+  },
+  "hero": {
+    "title": "Ton chat.",
+    "titleAccent": "En vedette.",
+    "subtitle": "Un film de 5 secondes. Un role qu'il attendait depuis toujours.",
+    "cta": "Soumettre au casting",
+    "price": "0,99EUR la scene, paiement 1 tap"
+  },
+  "upload": {
+    "dropzone": {
+      "default": "Depose la photo de ton chat ici",
+      "dragging": "Lache pour soumettre",
+      "uploading": "Upload en cours...",
+      "done": "Screen test recu"
+    },
+    "hint": "JPG, PNG, HEIC — min 512px",
+    "error": {
+      "tooLarge": "Photo trop lourde (max 10 Mo)",
+      "wrongFormat": "Format non supporte",
+      "tooSmall": "Photo trop petite (min 512x512)"
+    }
+  },
+  "categories": {
+    "sections": {
+      "trending": "Trending",
+      "music": "Musique",
+      "dance": "Danse",
+      "cinematic": "Cinema",
+      "moments": "Moments"
+    },
+    "previewCta": "Voir un apercu"
+  },
+  "bundles": {
+    "solo": {
+      "name": "Solo",
+      "count": "1 scene",
+      "perUnit": "0,99EUR la scene"
+    },
+    "trio": {
+      "name": "Trio",
+      "count": "3 scenes",
+      "perUnit": "0,83EUR la scene",
+      "badge": "Populaire"
+    },
+    "ten": {
+      "name": "Casting Call",
+      "count": "10 scenes",
+      "perUnit": "0,70EUR la scene"
+    }
+  },
+  "checkout": {
+    "action": "Action",
+    "processing": "Le realisateur prepare la scene...",
+    "loading": {
+      "messages": [
+        "Le realisateur prepare l'eclairage...",
+        "Maquillage en cours sur le talent...",
+        "Le chef op' cadre la scene...",
+        "Silence plateau...",
+        "Moteur...",
+        "Action.",
+        "Le monteur peaufine la coupe...",
+        "Presque pret pour la projection..."
+      ]
+    }
+  },
+  "finalCut": {
+    "title": "C'est dans la boite.",
+    "subtitle": "Ta video est prete.",
+    "download": "Telecharger le montage",
+    "share": "Partager",
+    "crossSellTitle": "Et maintenant ?",
+    "crossSellHint": "Ton chat vient de tuer le role de {category}. Et si on l'essayait en {newCategory} ?"
+  },
+  "postits": {
+    "spielberg": "M. Spielberg a rappele 3x",
+    "lawyers": "Demander aux avocats pour le cas Minou",
+    "pintard": "Rdv Madame Pintard jeudi",
+    "dumoulin": "Ne JAMAIS accepter le chat de Mme Dumoulin",
+    "price": "0,99EUR la scene, paiement 1 tap"
+  },
+  "phone": {
+    "label": "Line 2 — urgent",
+    "notification": "Nouveau cast: {name}, il y a {time}"
+  },
+  "errors": {
+    "generation": {
+      "title": "Coupez.",
+      "message": "La scene n'a pas convaincu le realisateur. On refait une prise ?",
+      "retry": "Deuxieme prise, 0,49EUR"
+    },
+    "notFound": {
+      "title": "Cette scene a ete coupee au montage.",
+      "cta": "Retour au plateau"
+    },
+    "timeout": {
+      "title": "La production prend plus de temps que prevu.",
+      "message": "On t'envoie la video des qu'elle est prete."
+    }
+  },
+  "footer": {
+    "tagline": "Produit a Nice, France.",
+    "copyright": "MeowReel Studios, 2026.",
+    "links": {
+      "cgv": "Conditions de vente",
+      "cgu": "Mentions legales",
+      "privacy": "Confidentialite",
+      "contact": "Support"
+    }
+  }
+}
