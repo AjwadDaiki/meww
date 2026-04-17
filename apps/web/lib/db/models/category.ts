@@ -1,12 +1,13 @@
-import mongoose, { Schema, type Model, type Document } from 'mongoose';
+import mongoose, { Schema, type Model } from 'mongoose';
 
 const SECTIONS = ['trending', 'music', 'dance', 'cinematic', 'moments'] as const;
 type Section = (typeof SECTIONS)[number];
 
-const MODELS = ['seedance-2.0-fast', 'seedance-2.0-pro', 'wan-2.2-i2v-fast'] as const;
-type GenerationModel = (typeof MODELS)[number];
+const GENERATION_MODELS = ['seedance-2.0-fast', 'seedance-2.0-pro', 'wan-2.2-i2v-fast'] as const;
+type GenerationModel = (typeof GENERATION_MODELS)[number];
 
-export interface ICategory extends Document {
+export interface ICategory {
+  _id: mongoose.Types.ObjectId;
   slug: string;
   section: Section;
   order: number;
@@ -29,7 +30,7 @@ export interface ICategory extends Document {
 
   basePrompt: string;
   negativePrompt: string;
-  model: GenerationModel;
+  generationModel: GenerationModel;
   durationSeconds: number;
   resolution: string;
   audioPrompt?: string;
@@ -71,7 +72,7 @@ const CategorySchema = new Schema<ICategory>(
 
     basePrompt: { type: String, required: true },
     negativePrompt: { type: String, default: 'no text, no watermark, no blur' },
-    model: { type: String, enum: MODELS, default: 'seedance-2.0-fast' },
+    generationModel: { type: String, enum: GENERATION_MODELS, default: 'seedance-2.0-fast' },
     durationSeconds: { type: Number, default: 5 },
     resolution: { type: String, default: '720p' },
     audioPrompt: String,

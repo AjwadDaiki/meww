@@ -1,5 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
+import { DeskScene } from '@/components/landing/desk-scene';
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -18,10 +19,9 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Placeholder — will be replaced with the full desk scene
   return (
     <main>
-      <h1>MeowReel</h1>
+      <DeskScene />
     </main>
   );
 }

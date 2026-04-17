@@ -1,4 +1,4 @@
-import mongoose, { Schema, type Model, type Document } from 'mongoose';
+import mongoose, { Schema, type Model } from 'mongoose';
 
 const ORDER_STATUSES = [
   'draft',
@@ -18,7 +18,8 @@ type Bundle = (typeof BUNDLES)[number];
 const LOCALES = ['fr', 'en', 'es', 'de', 'it', 'pt'] as const;
 type OrderLocale = (typeof LOCALES)[number];
 
-export interface IOrder extends Document {
+export interface IOrder {
+  _id: mongoose.Types.ObjectId;
   shortId: string;
   status: OrderStatus;
   locale: OrderLocale;
