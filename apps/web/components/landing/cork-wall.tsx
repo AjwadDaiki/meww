@@ -39,14 +39,15 @@ export function CorkWall() {
               <div className={`h-px flex-1 ${section.color} border-t border-dashed opacity-40`} />
             </div>
 
-            {/* Polaroids grid */}
-            <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+            {/* Polaroids: horizontal scroll on mobile, grid wrap on desktop */}
+            <div className="flex gap-4 md:gap-6 overflow-x-auto md:overflow-visible md:flex-wrap md:justify-center pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide">
               {[...Array(6)].map((_, i) => (
-                <MrPolaroid
-                  key={`${section.id}-${i}`}
-                  rotation={POLAROID_ROTATIONS[(sectionIdx * 6 + i) % POLAROID_ROTATIONS.length]}
-                  caption={`scene ${String(sectionIdx * 6 + i + 1).padStart(3, '0')}`}
-                />
+                <div key={`${section.id}-${i}`} className="flex-shrink-0 snap-center">
+                  <MrPolaroid
+                    rotation={POLAROID_ROTATIONS[(sectionIdx * 6 + i) % POLAROID_ROTATIONS.length]}
+                    caption={`scene ${String(sectionIdx * 6 + i + 1).padStart(3, '0')}`}
+                  />
+                </div>
               ))}
             </div>
           </section>

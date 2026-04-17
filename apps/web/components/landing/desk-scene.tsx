@@ -9,6 +9,7 @@ import { MrPolaroid } from '@/components/ui/mr-polaroid';
 import { Notebook } from './notebook';
 import { PhoneDial } from './phone-dial';
 import { CorkWall } from './cork-wall';
+import { MobileNav } from './mobile-nav';
 
 export function DeskScene() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -152,6 +153,8 @@ export function DeskScene() {
           </div>
         </div>
       </motion.div>
+      {/* Mobile bottom nav */}
+      <MobileNav />
     </div>
   );
 }
