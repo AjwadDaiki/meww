@@ -216,6 +216,33 @@ const CATEGORIES = [
     tagline: { fr: 'Toque et diplome', en: 'Cap and diploma', es: 'Birrete y diploma' },
     tags: ['moments', 'graduation', 'diploma', 'celebration'] },
 
+  // ========== SIGNATURE 6-7 (hero default, family: six-seven) ==========
+
+  { slug: 'six-seven-bedroom', section: 'dance', order: 0, family: 'six-seven', durationSeconds: 5, isSignature: true,
+    name: { fr: '6-7 Chambre', en: '6-7 Bedroom', es: '6-7 Dormitorio' },
+    tagline: { fr: 'Le trend du moment', en: 'The trend right now', es: 'La tendencia ahora' },
+    tags: ['signature', '6-7', 'dance', 'bedroom', 'viral', 'trending'] },
+  { slug: 'six-seven-gym', section: 'dance', order: 0, family: 'six-seven', durationSeconds: 5,
+    name: { fr: '6-7 Gym', en: '6-7 Gym', es: '6-7 Gym' },
+    tagline: { fr: '6-7 a la salle', en: '6-7 at the gym', es: '6-7 en el gym' },
+    tags: ['signature', '6-7', 'dance', 'gym'] },
+  { slug: 'six-seven-kitchen', section: 'dance', order: 0, family: 'six-seven', durationSeconds: 5,
+    name: { fr: '6-7 Cuisine', en: '6-7 Kitchen', es: '6-7 Cocina' },
+    tagline: { fr: '6-7 en cuisine', en: '6-7 in the kitchen', es: '6-7 en la cocina' },
+    tags: ['signature', '6-7', 'dance', 'kitchen'] },
+  { slug: 'six-seven-classroom', section: 'dance', order: 0, family: 'six-seven', durationSeconds: 5,
+    name: { fr: '6-7 Classe', en: '6-7 Classroom', es: '6-7 Aula' },
+    tagline: { fr: '6-7 en cours', en: '6-7 in class', es: '6-7 en clase' },
+    tags: ['signature', '6-7', 'dance', 'classroom'] },
+  { slug: 'six-seven-car', section: 'dance', order: 0, family: 'six-seven', durationSeconds: 5,
+    name: { fr: '6-7 Voiture', en: '6-7 Car', es: '6-7 Coche' },
+    tagline: { fr: '6-7 en voiture', en: '6-7 in the car', es: '6-7 en el coche' },
+    tags: ['signature', '6-7', 'dance', 'car'] },
+  { slug: 'six-seven-locker-room', section: 'dance', order: 0, family: 'six-seven', durationSeconds: 5,
+    name: { fr: '6-7 Vestiaire', en: '6-7 Locker Room', es: '6-7 Vestuario' },
+    tagline: { fr: '6-7 au vestiaire', en: '6-7 locker room', es: '6-7 vestuario' },
+    tags: ['signature', '6-7', 'dance', 'locker-room'] },
+
   // ========== VARIATIONS (new setups, same actions) ==========
 
   // DANCE variations (6s duration)

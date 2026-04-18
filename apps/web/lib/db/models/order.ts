@@ -39,6 +39,17 @@ export interface IOrder {
     promptUsed?: string;
   };
 
+  customization: {
+    action: string;
+    decor: {
+      type: 'auto' | 'preset' | 'user-upload';
+      presetId?: string;
+      userPhotoUrl?: string;
+    };
+    duration: 5 | 10 | 15;
+    style: 'amateur' | 'doorbell' | 'broadcast' | 'cinematic';
+  };
+
   bundle: Bundle;
   unitCount: number;
   amountCents: number;
@@ -110,6 +121,17 @@ const OrderSchema = new Schema<IOrder>(
       categorySlug: { type: String, required: true },
       variationId: String,
       promptUsed: String,
+    },
+
+    customization: {
+      action: { type: String, default: 'six-seven-bedroom' },
+      decor: {
+        type: { type: String, enum: ['auto', 'preset', 'user-upload'], default: 'auto' },
+        presetId: String,
+        userPhotoUrl: String,
+      },
+      duration: { type: Number, enum: [5, 10, 15], default: 5 },
+      style: { type: String, enum: ['amateur', 'doorbell', 'broadcast', 'cinematic'], default: 'amateur' },
     },
 
     bundle: { type: String, enum: BUNDLES, default: 'single' },

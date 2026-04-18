@@ -41,6 +41,9 @@ export interface ICategory {
     promptModifier: string;
   }>;
 
+  family?: string;
+  isSignature?: boolean;
+
   tags: string[];
   seoKeyword: string;
 
@@ -55,6 +58,7 @@ const CategorySchema = new Schema<ICategory>(
     order: { type: Number, default: 0 },
     active: { type: Boolean, default: true },
     family: { type: String, index: true },
+    isSignature: { type: Boolean, default: false },
 
     name: {
       fr: { type: String, required: true },
