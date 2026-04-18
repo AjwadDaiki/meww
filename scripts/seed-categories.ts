@@ -22,7 +22,7 @@ const CategorySchema = new mongoose.Schema(
     previewPosterUrl: String,
     basePrompt: { type: String, default: '' },
     negativePrompt: { type: String, default: 'no full human body visible, no human face visible, no text overlays, no watermark, no logos, no distorted anatomy, no extra limbs, no cartoon style, no anime style, no cinematic color grading, no studio lighting' },
-    generationModel: { type: String, default: 'seedance-2.0' },
+    generationModel: { type: String, default: 'seedance-1-lite' },
     durationSeconds: { type: Number, default: 5 },
     family: { type: String, index: true },
     resolution: { type: String, default: '720p' },

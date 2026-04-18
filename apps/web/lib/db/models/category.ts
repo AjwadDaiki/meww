@@ -3,7 +3,7 @@ import mongoose, { Schema, type Model } from 'mongoose';
 const SECTIONS = ['trending', 'music', 'dance', 'cinematic', 'moments'] as const;
 type Section = (typeof SECTIONS)[number];
 
-const GENERATION_MODELS = ['seedance-2-lite', 'seedance-2.0', 'wan-2.2-i2v-fast'] as const;
+const GENERATION_MODELS = ['seedance-1-lite', 'wan-2.2-i2v-fast'] as const;
 type GenerationModel = (typeof GENERATION_MODELS)[number];
 
 export interface ICategory {
@@ -77,7 +77,7 @@ const CategorySchema = new Schema<ICategory>(
 
     basePrompt: { type: String, required: true },
     negativePrompt: { type: String, default: 'no text, no watermark, no blur' },
-    generationModel: { type: String, enum: GENERATION_MODELS, default: 'seedance-2-lite' },
+    generationModel: { type: String, enum: GENERATION_MODELS, default: 'seedance-1-lite' },
     durationSeconds: { type: Number, default: 5 },
     resolution: { type: String, default: '720p' },
     audioPrompt: String,

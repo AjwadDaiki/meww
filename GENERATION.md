@@ -26,44 +26,63 @@
 
 ## Choix du modèle
 
-### Modele choisi : Seedance 2 Lite
+### Primary : Seedance 1 Lite (VERROUILLE avril 2026)
 
-**`bytedance/seedance-2-lite`** (Replicate)
-- Duree : 5 secondes
-- Resolution : 720p
-- Aspect ratio : 9:16 (portrait, TikTok-native)
-- Cout : ~$0.05 par video
-- Temps : ~60-90s
-- Qualite : excellente pour I2V, coherence de personnage top
-- Audio natif : oui (critical pour scenes musicales)
+**`bytedance/seedance-1-lite`** (Replicate)
+- 3.1M+ runs, modele mature et stable
+- Qualite : excellente pour I2V chats amateur TikTok
+- Vitesse : 30-60 secondes par generation
+- Audio natif : non (videos muettes, OK pour TikTok)
 
-**Prompts** : voir PROMPTS-SEEDANCE.md (source unique, 41 prompts structures)
+**Prix reels confirmes (avril 2026) :**
+| Config | Cout |
+|---|---|
+| 5s 480p | $0.08 |
+| 5s 720p | $0.18 |
+| 10s 480p | $0.16 |
+| 10s 720p | $0.36 |
 
-**Negative prompt global** (applique a TOUTES les generations) :
+**Resolution par palier de prix :**
+- 0,99EUR (base) : 480p 5s = $0.08 cout
+- 1,99EUR+ (premium) : 720p 5s = $0.18 cout
+- +1EUR duree 10s : cout x2
+
+**Prompts** : voir PROMPTS-SEEDANCE.md (source unique)
+
+**Negative prompt global** :
 ```
-no humans, no text overlays, no watermark, no logos,
+no full human body visible, no human face visible,
+no text overlays, no watermark, no logos,
 no distorted anatomy, no extra limbs, no extra paws,
 no blurry motion, no cartoon style, no anime style,
 no 3D render look, no uncanny valley, no floating objects,
-no glitches, no artifacts, no multiple cats, no disappearing cat
+no glitches, no artifacts, no multiple cats, no disappearing cat,
+no cinematic color grading, no studio lighting
 ```
 
-### Fallback (si Seedance 2 Lite fail)
+### Fallback : Wan 2.2 I2V Fast
 
 **`wan-video/wan-2.2-i2v-fast`** (Replicate)
-- Duree : 5s
-- Resolution : 480p / 720p
-- Cout : ~$0.03-0.05 par video
-- Qualite : bonne, moins premium mais fonctionnelle
-- Audio natif : non
+- 10M+ runs
+- Cout : 5s 480p $0.05, 5s 720p $0.11
+- Qualite : bonne, moins premium que Seedance 1 Lite
 
-### Tier Premium V2 (upsell a 2,99EUR)
+**Fallback policy** (apres 2 echecs Seedance 1 Lite) :
+1. Tentative 1 : Seedance 1 Lite prompt original
+2. Tentative 2 : Seedance 1 Lite prompt ajuste
+3. Tentative 3 : Wan 2.2 I2V Fast
+4. Tentative 4 : Remboursement auto + email excuse
 
-**`bytedance/seedance-2.0`** (non-fast)
-- Duree : 10s
-- Resolution : 1080p
-- Cout : ~$0.70-1.40 par video
-- Vendu a 2,99EUR = marge 50%+
+**INTERDIT** : Seedance 2, Seedance 1 Pro, tout modele > $0.20/video
+
+### Marges par palier
+
+| Prix | Stripe | Replicate | Marge nette |
+|---|---|---|---|
+| 0,99EUR | 0,26EUR | 0,08EUR | 0,65EUR (66%) |
+| 1,99EUR | 0,29EUR | 0,18EUR | 1,52EUR (76%) |
+| 2,99EUR | 0,30EUR | 0,18EUR | 2,51EUR (84%) |
+| 3,99EUR | 0,31EUR | 0,36EUR | 3,32EUR (83%) |
 
 ---
 
