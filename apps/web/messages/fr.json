@@ -1,124 +1,129 @@
 {
   "meta": {
-    "title": "MeowReel Studios — Ton chat, en vedette",
-    "description": "Transforme la photo de ton chat en video IA virale en 90 secondes. 0,99EUR. Livre par email."
+    "title": "MeowReel — Ton chat, la star",
+    "description": "Transforme la photo de ton chat en video IA virale en 60 secondes. 0,99EUR. Livre par email."
+  },
+  "hero": {
+    "title": "TON CHAT.",
+    "titleAccent": "STAR.",
+    "subtitle": "0,99EUR livre en 60 secondes",
+    "cta": "UPLOAD TON CHAT 0,99EUR",
+    "socialProof": "2 847 chats sont devenus viraux cette semaine"
   },
   "nav": {
     "title": "MeowReel",
-    "subtitle": "Today's castings",
-    "location": "Nice, France — Est. 2026",
     "sections": {
       "trending": "Trending",
-      "music": "Musique",
-      "dance": "Danse",
+      "music": "Music Legends",
+      "sports": "Sports Heroes",
+      "dance": "Dance Floor",
       "cinematic": "Cinema",
       "moments": "Moments"
     }
   },
-  "hero": {
-    "title": "Ton chat.",
-    "titleAccent": "En vedette.",
-    "subtitle": "Un film de 5 secondes. Un role qu'il attendait depuis toujours.",
-    "cta": "Soumettre au casting",
-    "price": "0,99EUR la scene, paiement 1 tap"
+  "sections": {
+    "trending": "Trending",
+    "music": "Music Legends",
+    "sports": "Sports Heroes",
+    "dance": "Dance Floor",
+    "cinematic": "Roles Cinematiques",
+    "moments": "Moments Speciaux"
   },
   "upload": {
     "dropzone": {
-      "default": "Depose la photo de ton chat ici",
+      "default": "Depose ta star ici",
       "dragging": "Lache pour soumettre",
       "uploading": "Upload en cours...",
-      "done": "Screen test recu"
+      "done": "Parfait."
     },
-    "hint": "JPG, PNG, HEIC — min 512px",
-    "error": {
-      "tooLarge": "Photo trop lourde (max 10 Mo)",
-      "wrongFormat": "Format non supporte",
-      "tooSmall": "Photo trop petite (min 512x512)"
-    }
+    "hint": "JPG, PNG, HEIC — max 10 Mo",
+    "camera": "Prendre une photo",
+    "gallery": "Choisir dans la galerie",
+    "success": "Maintenant choisis le moment de ton chat."
   },
   "categories": {
-    "sections": {
-      "trending": "Trending",
-      "music": "Musique",
-      "dance": "Danse",
-      "cinematic": "Cinema",
-      "moments": "Moments"
-    },
-    "previewCta": "Voir un apercu"
+    "title": "Choisis le moment de ton chat",
+    "previewCta": "Apercu"
+  },
+  "preview": {
+    "title": "Voici le nouveau {category}.",
+    "cta": "EN FAIRE UNE VIDEO 0,99EUR",
+    "delivery": "Livraison en 60 secondes"
   },
   "bundles": {
     "solo": {
       "name": "Solo",
-      "count": "1 scene",
-      "perUnit": "0,99EUR la scene"
+      "count": "1 video",
+      "perUnit": "0,99EUR la video"
     },
     "trio": {
       "name": "Trio",
-      "count": "3 scenes",
-      "perUnit": "0,83EUR la scene",
+      "count": "3 videos",
+      "perUnit": "0,83EUR la video",
       "badge": "Populaire"
     },
     "ten": {
       "name": "Casting Call",
-      "count": "10 scenes",
-      "perUnit": "0,70EUR la scene"
-    }
+      "count": "10 videos",
+      "perUnit": "0,70EUR la video"
+    },
+    "cta": "CONTINUER"
   },
   "checkout": {
-    "action": "Action",
-    "processing": "Le realisateur prepare la scene...",
     "loading": {
       "messages": [
-        "Le realisateur prepare l'eclairage...",
-        "Maquillage en cours sur le talent...",
-        "Le chef op' cadre la scene...",
-        "Silence plateau...",
-        "Moteur...",
-        "Action.",
-        "Le monteur peaufine la coupe...",
-        "Presque pret pour la projection..."
+        "Minou apprend la choreo...",
+        "Lumieres. Camera. Moustaches.",
+        "Auto-tune des miaulements...",
+        "Le realisateur est hyper motive...",
+        "Post-production du drama...",
+        "Ajout de paillettes...",
+        "Presque pret pour la premiere..."
       ]
-    }
+    },
+    "producing": "PRODUCTION EN COURS...",
+    "canClose": "Tu peux fermer, on t'envoie un email"
   },
   "finalCut": {
-    "title": "C'est dans la boite.",
-    "subtitle": "Ta video est prete.",
-    "download": "Telecharger le montage",
-    "share": "Partager",
-    "crossSellTitle": "Et maintenant ?",
-    "crossSellHint": "Ton chat vient de tuer le role de {category}. Et si on l'essayait en {newCategory} ?"
-  },
-  "postits": {
-    "spielberg": "M. Spielberg a rappele 3x",
-    "lawyers": "Demander aux avocats pour le cas Minou",
-    "pintard": "Rdv Madame Pintard jeudi",
-    "dumoulin": "Ne JAMAIS accepter le chat de Mme Dumoulin",
-    "price": "0,99EUR la scene, paiement 1 tap"
-  },
-  "phone": {
-    "label": "Line 2 — urgent",
-    "notification": "Nouveau cast: {name}, il y a {time}"
+    "title": "C'EST LIVE.",
+    "subtitle": "Poste-le. Regarde le buzz.",
+    "download": "TELECHARGER HD",
+    "share": "PARTAGER",
+    "crossSellTitle": "ENVIE DE PLUS ?",
+    "crossSellHint": "Ton chat en {category}"
   },
   "errors": {
     "generation": {
-      "title": "Coupez.",
-      "message": "La scene n'a pas convaincu le realisateur. On refait une prise ?",
-      "retry": "Deuxieme prise, 0,49EUR"
+      "title": "Hmm, ca a pas fonctionne.",
+      "cta": "REESSAYER"
     },
     "notFound": {
-      "title": "Cette scene a ete coupee au montage.",
-      "cta": "Retour au plateau"
-    },
-    "timeout": {
-      "title": "La production prend plus de temps que prevu.",
-      "message": "On t'envoie la video des qu'elle est prete."
+      "title": "Cette scene a ete coupee.",
+      "cta": "RETOUR AU PLATEAU"
     }
   },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      {
+        "q": "Combien de temps ca prend ?",
+        "a": "60 secondes. Serieusement. Upload, paiement, fini."
+      },
+      {
+        "q": "Je peux l'utiliser partout ?",
+        "a": "Oui. TikTok, Instagram, WhatsApp, partout. C'est a toi."
+      },
+      {
+        "q": "Quels formats acceptez-vous ?",
+        "a": "JPG, PNG, HEIC. Min 512px. Max 10Mo. Le visage de ton chat doit etre bien visible."
+      }
+    ]
+  },
   "footer": {
-    "tagline": "Produit a Nice, France.",
+    "tagline": "Fait a Nice, France.",
     "copyright": "MeowReel Studios, 2026.",
     "links": {
-      "cgv": "Conditions de vente",
+      "cgv": "CGV",
       "cgu": "Mentions legales",
       "privacy": "Confidentialite",
       "contact": "Support"

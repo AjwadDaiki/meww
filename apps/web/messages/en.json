@@ -1,125 +1,130 @@
 {
   "meta": {
-    "title": "MeowReel Studios — Your cat, the star",
-    "description": "Turn your cat's photo into a viral AI video in 90 seconds. EUR0.99. Delivered by email."
+    "title": "MeowReel — Your Cat, The Star",
+    "description": "Turn your cat's photo into a viral AI video in 60 seconds. EUR0.99. Delivered by email."
+  },
+  "hero": {
+    "title": "YOUR CAT.",
+    "titleAccent": "STAR.",
+    "subtitle": "0,99EUR delivered in 60 seconds",
+    "cta": "UPLOAD YOUR CAT 0,99EUR",
+    "socialProof": "2,847 cats went viral this week"
   },
   "nav": {
     "title": "MeowReel",
-    "subtitle": "Today's castings",
-    "location": "Nice, France — Est. 2026",
     "sections": {
       "trending": "Trending",
-      "music": "Music",
-      "dance": "Dance",
+      "music": "Music Legends",
+      "sports": "Sports Heroes",
+      "dance": "Dance Floor",
       "cinematic": "Cinematic",
       "moments": "Moments"
     }
   },
-  "hero": {
-    "title": "Your cat.",
-    "titleAccent": "The star.",
-    "subtitle": "A 5-second film. The role they were born for.",
-    "cta": "Submit to casting",
-    "price": "EUR0.99 per scene, 1-tap payment"
+  "sections": {
+    "trending": "Trending Now",
+    "music": "Music Legends",
+    "sports": "Sports Heroes",
+    "dance": "Dance Floor",
+    "cinematic": "Cinematic Roles",
+    "moments": "Special Moments"
   },
   "upload": {
     "dropzone": {
-      "default": "Drop your cat's photo here",
+      "default": "Drop your star here",
       "dragging": "Release to submit",
       "uploading": "Uploading...",
-      "done": "Screen test received"
+      "done": "Perfect."
     },
-    "hint": "JPG, PNG, HEIC — min 512px",
-    "error": {
-      "tooLarge": "Photo too large (max 10 MB)",
-      "wrongFormat": "Unsupported format",
-      "tooSmall": "Photo too small (min 512x512)"
-    }
+    "hint": "JPG, PNG, HEIC — max 10 MB",
+    "camera": "Take a photo",
+    "gallery": "Pick from library",
+    "success": "Now pick your cat's moment."
   },
   "categories": {
-    "sections": {
-      "trending": "Trending",
-      "music": "Music",
-      "dance": "Dance",
-      "cinematic": "Cinematic",
-      "moments": "Moments"
-    },
+    "title": "Pick your cat's moment",
     "previewCta": "Preview"
+  },
+  "preview": {
+    "title": "Meet the new {category}.",
+    "cta": "MAKE IT A VIDEO 0,99EUR",
+    "delivery": "Delivery in 60 seconds"
   },
   "bundles": {
     "solo": {
       "name": "Solo",
-      "count": "1 scene",
-      "perUnit": "EUR0.99 per scene"
+      "count": "1 video",
+      "perUnit": "EUR0.99 each"
     },
     "trio": {
       "name": "Trio",
-      "count": "3 scenes",
-      "perUnit": "EUR0.83 per scene",
+      "count": "3 videos",
+      "perUnit": "EUR0.83 each",
       "badge": "Popular"
     },
     "ten": {
       "name": "Casting Call",
-      "count": "10 scenes",
-      "perUnit": "EUR0.70 per scene"
-    }
+      "count": "10 videos",
+      "perUnit": "EUR0.70 each"
+    },
+    "cta": "CONTINUE"
   },
   "checkout": {
-    "action": "Action",
-    "processing": "The director is setting the scene...",
     "loading": {
       "messages": [
-        "The director is setting the lights...",
-        "Makeup in progress on the talent...",
-        "The DP is framing the shot...",
-        "Quiet on set...",
-        "Rolling...",
-        "Action.",
-        "The editor is perfecting the cut...",
-        "Almost ready for screening..."
+        "Minou is learning the choreo...",
+        "Lights. Camera. Whiskers.",
+        "Auto-tuning the meows...",
+        "The director is hyped...",
+        "Post-processing the drama...",
+        "Adding sparkles...",
+        "Almost ready for the premiere..."
       ]
-    }
+    },
+    "producing": "PRODUCING...",
+    "canClose": "You can close this, we'll email you"
   },
   "finalCut": {
-    "title": "That's a wrap.",
-    "subtitle": "Your video is ready.",
-    "download": "Download the final cut",
-    "share": "Share",
-    "crossSellTitle": "What's next?",
-    "crossSellHint": "Your cat just nailed the {category} role. How about trying {newCategory}?"
-  },
-  "postits": {
-    "spielberg": "Mr. Spielberg called 3x",
-    "lawyers": "Ask lawyers about the Minou case",
-    "pintard": "Meeting Mrs. Pintard Thursday",
-    "dumoulin": "NEVER accept Mrs. Dumoulin's cat",
-    "price": "EUR0.99 per scene, 1-tap payment"
-  },
-  "phone": {
-    "label": "Line 2 — urgent",
-    "notification": "New cast: {name}, {time} ago"
+    "title": "IT'S LIVE.",
+    "subtitle": "Post it. Watch it explode.",
+    "download": "DOWNLOAD HD",
+    "share": "SHARE",
+    "crossSellTitle": "WANT MORE?",
+    "crossSellHint": "Your cat as a {category}"
   },
   "errors": {
     "generation": {
-      "title": "Cut.",
-      "message": "The scene didn't convince the director. Try another take?",
-      "retry": "Second take, EUR0.49"
+      "title": "Hmm, that didn't land.",
+      "cta": "TRY AGAIN"
     },
     "notFound": {
-      "title": "This scene was left on the cutting room floor.",
-      "cta": "Back to set"
-    },
-    "timeout": {
-      "title": "Production is taking longer than expected.",
-      "message": "We'll send you the video as soon as it's ready."
+      "title": "This scene got cut.",
+      "cta": "BACK TO THE STAGE"
     }
+  },
+  "faq": {
+    "title": "FAQ",
+    "items": [
+      {
+        "q": "How long does it take?",
+        "a": "60 seconds. Seriously. Upload, pay, done."
+      },
+      {
+        "q": "Can I use it anywhere?",
+        "a": "Yes. TikTok, Instagram, WhatsApp, anywhere. It's yours."
+      },
+      {
+        "q": "What formats do you accept?",
+        "a": "JPG, PNG, HEIC. Min 512px. Max 10MB. Your cat's face should be clearly visible."
+      }
+    ]
   },
   "footer": {
     "tagline": "Made in Nice, France.",
     "copyright": "MeowReel Studios, 2026.",
     "links": {
-      "cgv": "Terms of sale",
-      "cgu": "Legal notice",
+      "cgv": "Terms",
+      "cgu": "Legal",
       "privacy": "Privacy",
       "contact": "Support"
     }

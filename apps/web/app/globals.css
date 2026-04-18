@@ -197,6 +197,12 @@ body {
   75% { transform: rotate(2deg); }
 }
 
+/* Confetti fall */
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(80vh) rotate(720deg); opacity: 0; }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-cta-pulse,
