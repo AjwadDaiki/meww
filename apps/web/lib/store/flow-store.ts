@@ -3,7 +3,7 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-const STEPS = ['upload', 'category', 'payment', 'processing', 'done'] as const;
+const STEPS = ['arrival', 'uploaded', 'scene-chosen', 'preview-ready', 'paying', 'producing', 'delivered'] as const;
 type FlowStep = (typeof STEPS)[number];
 
 const SESSION_TTL_MS = 30 * 60 * 1000; // 30 minutes
@@ -11,17 +11,27 @@ const SESSION_TTL_MS = 30 * 60 * 1000; // 30 minutes
 type FlowState = {
   currentStep: FlowStep;
   draftOrderId: string | null;
+  shortId: string | null;
+  photoUrl: string | null;
+  selectedCategory: string | null;
+  previewImageUrl: string | null;
   lastActivity: number;
 
   setStep: (step: FlowStep) => void;
-  setDraftOrderId: (id: string) => void;
+  setUploadResult: (orderId: string, shortId: string, photoUrl: string) => void;
+  setCategory: (slug: string) => void;
+  setPreviewImage: (url: string) => void;
   reset: () => void;
   isExpired: () => boolean;
 };
 
 const INITIAL_STATE = {
-  currentStep: 'upload' as FlowStep,
+  currentStep: 'arrival' as FlowStep,
   draftOrderId: null as string | null,
+  shortId: null as string | null,
+  photoUrl: null as string | null,
+  selectedCategory: null as string | null,
+  previewImageUrl: null as string | null,
   lastActivity: Date.now(),
 };
 
@@ -30,13 +40,33 @@ export const useFlowStore = create<FlowState>()(
     (set, get) => ({
       ...INITIAL_STATE,
 
-      setStep: (step: FlowStep) =>
+      setStep: (step) =>
         set({ currentStep: step, lastActivity: Date.now() }),
 
-      setDraftOrderId: (id: string) =>
-        set({ draftOrderId: id, lastActivity: Date.now() }),
+      setUploadResult: (orderId, shortId, photoUrl) =>
+        set({
+          draftOrderId: orderId,
+          shortId,
+          photoUrl,
+          currentStep: 'uploaded',
+          lastActivity: Date.now(),
+        }),
 
-      reset: () => set(INITIAL_STATE),
+      setCategory: (slug) =>
+        set({
+          selectedCategory: slug,
+          currentStep: 'scene-chosen',
+          lastActivity: Date.now(),
+        }),
+
+      setPreviewImage: (url) =>
+        set({
+          previewImageUrl: url,
+          currentStep: 'preview-ready',
+          lastActivity: Date.now(),
+        }),
+
+      reset: () => set({ ...INITIAL_STATE, lastActivity: Date.now() }),
 
       isExpired: () => {
         const elapsed = Date.now() - get().lastActivity;
@@ -47,17 +77,11 @@ export const useFlowStore = create<FlowState>()(
       name: 'meowreel-flow',
       storage: createJSONStorage(() => {
         if (typeof window === 'undefined') {
-          // SSR: return noop storage
-          return {
-            getItem: () => null,
-            setItem: () => {},
-            removeItem: () => {},
-          };
+          return { getItem: () => null, setItem: () => {}, removeItem: () => {} };
         }
         return sessionStorage;
       }),
       onRehydrateStorage: () => (state) => {
-        // Auto-reset if session expired
         if (state?.isExpired()) {
           state.reset();
         }
