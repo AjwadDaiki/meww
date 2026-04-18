@@ -54,6 +54,7 @@ const CategorySchema = new Schema<ICategory>(
     section: { type: String, enum: SECTIONS, required: true },
     order: { type: Number, default: 0 },
     active: { type: Boolean, default: true },
+    family: { type: String, index: true },
 
     name: {
       fr: { type: String, required: true },

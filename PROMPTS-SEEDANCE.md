@@ -1077,7 +1077,143 @@ Seedance 2.0 supporte l'audio natif. Pour certaines catégories, on peut injecte
 
 ---
 
-## 8. Règle finale
+## 8. Regle DANCE : mouvement accentue
+
+Pour TOUTES les categories section DANCE, appliquer ces ajustements :
+
+- **Duration** : 6 secondes (au lieu de 5 par defaut)
+- **Motion** : "swaying VIGOROUSLY side to side with clear rhythm, full body commitment, head bobbing visibly, ears flapping with motion, paws moving in sharp distinct beats"
+- **Fin de prompt** (avant negative) : "Exaggerated dance movement, clear choreography beats visible, high energy performance, motion is the main visual focus, multiple distinct dance poses within the 6 seconds."
+
+---
+
+## 9. Variations de setup (ajoutees apres validation griddy-gym-v1)
+
+Meme action, decors differents. Format amateur authenticity identique.
+
+### DANCE variations (4 nouvelles, total section = 10)
+
+#### V1. `griddy-kitchen`
+
+```
+Animate the cat from reference image 1 doing the Griddy dance in a home kitchen, standing upright on hind legs wearing a plain white t-shirt that covers its front paws, the cat holds its paws up near its eyes in the classic Griddy binocular pose then sways VIGOROUSLY side to side with full body commitment, head bobbing visibly, focused neutral expression.
+Family kitchen with standard white cabinets, fridge with magnets, dish soap by sink, cluttered countertop, a human hand holding a phone partially visible on the left edge of frame, cereal box on counter.
+Camera handheld iPhone medium shot, slight natural shake, vertical 9:16.
+Natural kitchen daylight from window, no filters, raw smartphone footage, slight overexposure from window.
+Exaggerated dance movement, clear choreography beats visible, high energy performance, multiple distinct dance poses within the 6 seconds.
+Preserve cat identity from reference. 6 seconds, human hand partially visible.
+```
+
+#### V2. `griddy-bedroom`
+
+```
+Animate the cat from reference image 1 doing the Griddy dance in a teenager bedroom, standing upright on hind legs wearing a plain black t-shirt that covers its front paws, the cat holds its paws up near its eyes in the Griddy binocular pose then sways VIGOROUSLY side to side, head bobbing, ears flapping with motion.
+Messy bedroom with unmade bed, LED strip lights on wall showing purple glow, posters on walls, clothes on floor, gaming chair visible, human legs in sweatpants partially visible sitting on bed edge watching.
+Camera handheld iPhone medium shot, slight shake, vertical 9:16.
+Mixed lighting from LED strips and overhead light, raw phone camera, no filters, slight purple tint from LEDs.
+Exaggerated dance movement, clear choreography beats visible, high energy, multiple distinct poses within 6 seconds.
+Preserve cat identity. 6 seconds, human legs partially visible.
+```
+
+#### V3. `griddy-livingroom`
+
+```
+Animate the cat from reference image 1 doing the Griddy dance in a living room, standing upright on hind legs wearing a plain gray t-shirt, Griddy binocular pose with paws near eyes then swaying VIGOROUSLY side to side, full body commitment, head bobbing.
+Standard living room with couch, TV showing sports game in background, coffee table with remotes, rug on floor, human arm reaching for phone partially visible at frame edge.
+Camera handheld iPhone medium shot from across the room, vertical 9:16, slight sway.
+Natural indoor ambient lighting, overhead light on, TV glow from background, raw smartphone footage, no color grading.
+Exaggerated dance movement, high energy, multiple dance poses within 6 seconds.
+Preserve cat identity. 6 seconds, human arm partially visible.
+```
+
+#### V4. `tiktok-dance-bathroom`
+
+```
+Animate the cat from reference image 1 performing a viral TikTok dance in front of a bathroom mirror, standing on hind legs wearing an oversized hoodie, arms doing precise hand gestures in sync with implied beat, hip swaying, head bobbing.
+Standard bathroom with large mirror reflecting the cat and phone, white tile walls, towels on rack, toiletries on counter, sink visible, ring light clipped to mirror edge.
+Camera held at eye level facing mirror, both cat and phone reflection visible in mirror, vertical 9:16.
+Bright ring light illumination mixed with bathroom overhead light, clean white lighting, raw phone camera.
+Exaggerated dance movement, clear choreography, high energy, 6 seconds.
+Preserve cat identity. Human hand holding phone visible in mirror reflection.
+```
+
+### SPORTS variations (4 nouvelles, total section = 12)
+
+#### V5. `football-park`
+
+```
+Animate the cat from reference image 1 kicking a small football in a public park, standing on hind legs wearing a plain jersey, the cat winds up and shoots the ball with one leg then throws arms up in celebration.
+Public park grass field with amateur goal posts, trees in background, joggers blurred in distance, a human in sneakers partially visible standing nearby watching.
+Camera handheld iPhone medium shot, slight shake, vertical 9:16.
+Natural outdoor daylight, overcast sky, green grass, raw phone footage, no filters.
+Preserve cat identity. 5 seconds, human legs partially visible, amateur park football.
+```
+
+#### V6. `football-livingroom`
+
+```
+Animate the cat from reference image 1 jumping off a couch celebrating a goal while watching football on TV, standing on hind legs arms raised triumphantly, wearing a football jersey, the TV shows a blurred match in background.
+Standard living room, couch with cushions, TV mounted on wall showing football match, coffee table with snacks and beer bottles, human arm with remote partially visible.
+Camera handheld iPhone medium shot, slight shake from excited filming, vertical 9:16.
+Indoor ambient lighting, TV glow, raw smartphone footage.
+Preserve cat identity. 5 seconds, human arm partially visible, celebration reaction video feel.
+```
+
+#### V7. `boxing-gym-training`
+
+```
+Animate the cat from reference image 1 punching a heavy bag in a boxing gym, standing on hind legs wearing hand wraps on front paws and a plain tank top, throwing jab-cross combinations with focused expression.
+Real boxing gym with hanging heavy bags, speed bags on wall, mirror in background, boxing ring ropes partially visible, rubber floor, a human hand steadying the bag from behind partially visible.
+Camera handheld iPhone medium shot, slight natural sway, vertical 9:16.
+Harsh overhead fluorescent gym lighting, raw phone footage, no filters, slight sweat sheen on fur.
+Preserve cat identity. 5 seconds, human hand partially visible holding bag.
+```
+
+#### V8. `basketball-street`
+
+```
+Animate the cat from reference image 1 dribbling a basketball on an outdoor street court, standing on hind legs wearing a baggy basketball jersey, the cat crossover dribbles then does a layup.
+Outdoor urban basketball court with chain net hoop, cracked asphalt, graffiti on nearby wall, fence around court, a human in sneakers standing at three point line partially visible.
+Camera handheld iPhone medium shot from sideline, slight shake, vertical 9:16.
+Natural afternoon sunlight with hard shadows, raw phone footage, urban street basketball vibe.
+Preserve cat identity. 5 seconds, human legs partially visible.
+```
+
+### MUSIC variations (3 nouvelles, total section = 11)
+
+#### V9. `jazz-trumpet-street`
+
+```
+Animate the cat from reference image 1 playing a tiny golden trumpet on a city sidewalk as a street busker, standing upright wearing a worn flat cap, swaying gently to the rhythm with eyes half closed.
+City sidewalk with a small open instrument case on ground with a few coins, pedestrian legs walking past in background blurred, brick building wall behind, a human crouching nearby filming partially visible.
+Camera handheld iPhone medium shot from pedestrian perspective, vertical 9:16.
+Natural daylight urban setting, no filters, raw phone footage, slight city ambient noise feel.
+Preserve cat identity. 5 seconds, human partially visible, street busker authenticity.
+```
+
+#### V10. `rock-guitar-bedroom`
+
+```
+Animate the cat from reference image 1 shredding an electric guitar in a bedroom, standing on hind legs wearing a band t-shirt, headbanging while playing power chords with intense focused expression.
+Teenager bedroom with posters of rock bands on walls, amp on floor with cable, messy desk, LED strip lights, human foot tapping along partially visible at bottom of frame.
+Camera handheld iPhone medium shot, slight shake from headbanging energy, vertical 9:16.
+Mixed lighting from overhead and colored LED strips, raw phone camera.
+Preserve cat identity. 5 seconds, human foot partially visible, bedroom jam session.
+```
+
+#### V11. `rap-freestyle-street`
+
+```
+Animate the cat from reference image 1 freestyle rapping in a street cypher, standing on hind legs wearing an oversized hoodie and cap, one paw gesturing to the beat, mouth moving as if spitting bars, head nodding.
+Urban street corner at dusk, small group of human legs in sneakers forming a circle around the cat (only legs visible no faces), streetlight overhead, parked cars in background.
+Camera handheld iPhone close medium shot from within the cypher circle, shaky, vertical 9:16.
+Dusk golden hour light mixing with streetlamp, raw phone footage, slight lens flare from streetlight.
+Preserve cat identity. 5 seconds, human legs visible forming cypher circle, street freestyle energy.
+```
+
+---
+
+## 10. Regle finale
 
 **Si une vidéo générée te semble "AI-évidente" ou "cringe"** :
 
