@@ -1,47 +1,33 @@
 @import "tailwindcss";
 
 /*
- * MeowReel Y2K Tabloid Scrapbook Design System
- * Source of truth: DESIGN3.md (DESIGN.md canonical copy)
- * Palette: Pop acide 2001 — Lisa Frank × Sassy Magazine × MTV 2003
+ * MeowReel Y2K Tamagotchi Pub 2000 Design System
+ * Source of truth: DESIGN4.md section 0 (locked visual non-negotiables)
+ * Palette: HEX locked from moodboard analysis (31 refs)
  */
 
 @theme {
-  /* Primaires pop acide */
-  --color-mr-pink-shock: #FF1E8E;
-  --color-mr-pink-bubblegum: #FF6BB5;
-  --color-mr-yellow-fluo: #FFEE00;
-  --color-mr-yellow-canary: #FFD700;
-  --color-mr-cyan-pool: #00D9F5;
-  --color-mr-cyan-electric: #1EFFFF;
-  --color-mr-green-apple: #5CFF3C;
-  --color-mr-green-mint: #A8FFCE;
-  --color-mr-red-tomato: #FF3020;
-  --color-mr-orange-neon: #FF7A00;
-  --color-mr-purple-grape: #A020F0;
-  --color-mr-lavender-pop: #D9A3FF;
+  /* Locked palette (DESIGN4.md 0.6 — no drift) */
+  --color-mr-rose-tama: #FF5FA2;
+  --color-mr-jaune-candy: #FFE14B;
+  --color-mr-cyan-piscine: #3EC4E6;
+  --color-mr-vert-apple: #7FD957;
+  --color-mr-orange-pop: #FF8C42;
+  --color-mr-violet-grape: #B565E8;
+  --color-mr-rouge-cerise: #FF4757;
 
-  /* Papier & textures */
-  --color-mr-paper-aged: #F4E6C2;
-  --color-mr-paper-white: #FBF7EC;
-  --color-mr-paper-cream: #F8EED9;
-  --color-mr-paper-kraft: #C9A876;
-  --color-mr-paper-stain: #D4B87A;
+  --color-mr-papier-gloss: #FFFEF8;
+  --color-mr-noir-encre: #0A0811;
 
-  /* Neutres chaleureux */
-  --color-mr-black-ink: #0A0811;
-  --color-mr-ink-blue: #1A2E8C;
-  --color-mr-ink-red: #D91424;
-
-  /* Chrome & metallic */
   --color-mr-chrome-silver: #C8D3E8;
   --color-mr-chrome-gold: #FFD840;
 
-  /* Font families */
+  /* Font families (DESIGN4.md section 5) */
+  --font-hero: "Fredoka", "Bubblegum Sans", sans-serif;
   --font-tabloid: "Anton", "Impact", "Oswald", sans-serif;
   --font-display-italic: "Playfair Display", "Cormorant Garamond", serif;
-  --font-chrome: "Orbitron", "Exo 2", sans-serif;
-  --font-handwritten: "Caveat", "Shadows Into Light", cursive;
+  --font-chrome: "Orbitron", "Audiowide", sans-serif;
+  --font-handwritten: "Caveat", "Patrick Hand", cursive;
   --font-handwritten-bold: "Permanent Marker", "Rock Salt", cursive;
   --font-pixel: "Silkscreen", "Press Start 2P", monospace;
   --font-body: "Inter", -apple-system, sans-serif;
@@ -57,8 +43,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-mr-black-ink);
-  background-color: var(--color-mr-paper-aged);
+  color: var(--color-mr-noir-encre);
+  background-color: var(--color-mr-papier-gloss);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
@@ -66,22 +52,8 @@ body {
   margin: 0;
 }
 
-/* ========== Text Effects (DESIGN3.md section 4.3) ========== */
+/* ========== Chrome text (DESIGN4.md 0.4 exact method) ========== */
 
-/* Hero title: outline thick + shadow offset */
-.title-pop {
-  color: var(--color-mr-yellow-fluo);
-  -webkit-text-stroke: 4px var(--color-mr-black-ink);
-  paint-order: stroke fill;
-  text-shadow:
-    6px 6px 0 var(--color-mr-pink-shock),
-    8px 8px 0 var(--color-mr-black-ink);
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  line-height: 0.9;
-}
-
-/* Chrome 3D metallic text */
 .chrome-text {
   background: linear-gradient(180deg,
     #FFFFFF 0%,
@@ -89,46 +61,81 @@ body {
     #4A5A75 45%,
     #1A2438 55%,
     #4A5A75 70%,
-    #C8D3E8 85%,
+    #C8D3E8 90%,
     #FFFFFF 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  -webkit-text-stroke: 3px var(--color-mr-noir-encre);
+  paint-order: stroke fill;
   text-shadow:
-    2px 2px 0 rgba(0,0,0,0.3),
-    4px 4px 0 var(--color-mr-pink-shock);
+    3px 3px 0 var(--color-mr-rose-tama),
+    5px 5px 0 var(--color-mr-noir-encre);
   font-style: italic;
-  letter-spacing: -0.02em;
   font-weight: 900;
+  letter-spacing: -0.02em;
 }
 
-/* Highlighter effect for key words */
+/* ========== Title pop (bold outline + offset shadow) ========== */
+
+.title-pop {
+  color: var(--color-mr-jaune-candy);
+  -webkit-text-stroke: 4px var(--color-mr-noir-encre);
+  paint-order: stroke fill;
+  text-shadow:
+    6px 6px 0 var(--color-mr-rose-tama),
+    8px 8px 0 var(--color-mr-noir-encre);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+}
+
+/* ========== Highlighter (yellow fluo underline) ========== */
+
 .highlighter {
   background: linear-gradient(180deg,
     transparent 60%,
-    var(--color-mr-yellow-fluo) 60%,
-    var(--color-mr-yellow-fluo) 90%,
+    var(--color-mr-jaune-candy) 60%,
+    var(--color-mr-jaune-candy) 90%,
     transparent 90%);
   padding: 0 0.1em;
 }
 
-/* ========== Animations ========== */
+/* ========== Animations (DESIGN4.md 0.5 — 2-4 frames simple) ========== */
 
+/* Sparkle pop: 4 frames */
 @keyframes sparkle {
   0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  25% { opacity: 0.6; transform: scale(1.0); }
   50% { opacity: 1; transform: scale(1.2); }
+  75% { opacity: 0.6; transform: scale(1.0); }
 }
 
+/* Sticker wiggle: sprite-style steps */
 @keyframes wiggle {
   0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0); }
   50% { transform: rotate(calc(var(--rot, 0deg) + 2deg)) translateY(-3px); }
 }
 
+/* CTA pulse */
 @keyframes cta-pulse {
   0%, 100% { transform: rotate(-1deg) scale(1); }
   50% { transform: rotate(-1deg) scale(1.04); }
 }
 
+/* PNJ blink: 2 frames with steps() for sprite feel */
+@keyframes blink {
+  0%, 90%, 100% { opacity: 1; }
+  95% { opacity: 0; }
+}
+
+/* Chrome bubble float */
+@keyframes bubble-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Confetti fall */
 @keyframes confetti-fall {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
   100% { transform: translateY(80vh) rotate(720deg); opacity: 0; }
@@ -140,7 +147,7 @@ body {
 
 /* ========== Utilities ========== */
 
-/* Grain noise overlay (applied to body via ::after) */
+/* Grain noise overlay */
 .grain-overlay::after {
   content: '';
   position: fixed;
@@ -153,34 +160,13 @@ body {
   z-index: 9999;
 }
 
-/* Scrollbar hide for carousels */
+/* Scrollbar hide */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-/* Torn paper clip-path mixin via CSS custom property */
-.torn-edges {
-  clip-path: polygon(
-    2% 0%, 5% 2%, 8% 0%, 12% 1%, 15% 0%, 18% 2%, 22% 0%, 25% 1%,
-    28% 0%, 32% 2%, 35% 0%, 38% 1%, 42% 0%, 45% 2%, 48% 0%, 52% 1%,
-    55% 0%, 58% 2%, 62% 0%, 65% 1%, 68% 0%, 72% 2%, 75% 0%, 78% 1%,
-    82% 0%, 85% 2%, 88% 0%, 92% 1%, 95% 0%, 98% 2%, 100% 0%,
-    100% 2%, 98% 5%, 100% 8%, 99% 12%, 100% 15%, 98% 18%, 100% 22%,
-    99% 28%, 100% 35%, 98% 42%, 100% 48%, 99% 55%, 100% 62%, 98% 68%,
-    100% 75%, 99% 82%, 100% 88%, 98% 95%, 100% 98%,
-    98% 100%, 95% 98%, 92% 100%, 88% 99%, 85% 100%, 82% 98%,
-    78% 100%, 75% 99%, 72% 100%, 68% 98%, 65% 100%, 62% 99%,
-    58% 100%, 55% 98%, 52% 100%, 48% 99%, 45% 100%, 42% 98%,
-    38% 100%, 35% 99%, 32% 100%, 28% 98%, 25% 100%, 22% 99%,
-    18% 100%, 15% 98%, 12% 100%, 8% 99%, 5% 100%, 2% 98%, 0% 100%,
-    0% 98%, 2% 95%, 0% 92%, 1% 88%, 0% 85%, 2% 82%,
-    0% 78%, 1% 72%, 0% 65%, 2% 58%, 0% 52%, 1% 45%,
-    0% 38%, 2% 32%, 0% 25%, 1% 18%, 0% 12%, 2% 5%
-  );
 }
 
 /* Reduced motion */
