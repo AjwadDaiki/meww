@@ -4,7 +4,8 @@
  */
 
 export const VIDEO_MODELS = {
-  primary: {
+  // Without sound (default)
+  silent_primary: {
     slug: 'bytedance/seedance-1-lite',
     costs: {
       '5s_480p': 0.08,
@@ -12,41 +13,52 @@ export const VIDEO_MODELS = {
       '10s_480p': 0.16,
       '10s_720p': 0.36,
     },
-    params: {
-      aspect_ratio: '9:16',
-      fps: 24,
-    },
   },
-  fallback: {
+  silent_fallback: {
     slug: 'wan-video/wan-2.2-i2v-fast',
     costs: {
       '5s_480p': 0.05,
       '5s_720p': 0.11,
     },
-    params: {
-      aspect_ratio: '9:16',
-      num_frames: 120,
+  },
+  // With sound (+0.99EUR)
+  audio_primary: {
+    slug: 'wan-video/wan-2.5-i2v-fast',
+    costs: {
+      '5s_480p': 0.15,
+      '5s_720p': 0.30,
+      '10s_480p': 0.30,
+      '10s_720p': 0.60,
+      '15s_720p': 0.90,
+    },
+  },
+  audio_fallback: {
+    slug: 'bytedance/seedance-2-fast',
+    costs: {
+      '5s_480p': 0.20,
+      '5s_720p': 0.40,
     },
   },
 } as const;
 
-export const RESOLUTION_BY_PRICE = {
-  basic: '480p',   // 0.99EUR base
-  premium: '720p', // 1.99EUR+
-} as const;
-
 export const GLOBAL_NEGATIVE_PROMPT = `no full human body visible, no human face visible, no text overlays, no watermark, no logos, no distorted anatomy, no extra limbs, no extra paws, no blurry motion, no cartoon style, no anime style, no 3D render look, no uncanny valley, no floating objects, no glitches, no artifacts, no multiple cats, no disappearing cat, no cinematic color grading, no studio lighting`;
 
-export function getResolution(priceCents: number): '480p' | '720p' {
-  return priceCents >= 199 ? '720p' : '480p';
+export function selectModel(sound: boolean): {
+  primary: typeof VIDEO_MODELS[keyof typeof VIDEO_MODELS];
+  fallback: typeof VIDEO_MODELS[keyof typeof VIDEO_MODELS];
+} {
+  if (sound) {
+    return {
+      primary: VIDEO_MODELS.audio_primary,
+      fallback: VIDEO_MODELS.audio_fallback,
+    };
+  }
+  return {
+    primary: VIDEO_MODELS.silent_primary,
+    fallback: VIDEO_MODELS.silent_fallback,
+  };
 }
 
-export function getModelCost(
-  model: 'primary' | 'fallback',
-  duration: 5 | 10,
-  resolution: '480p' | '720p'
-): number {
-  const key = `${duration}s_${resolution}` as keyof typeof VIDEO_MODELS.primary.costs;
-  const costs = model === 'primary' ? VIDEO_MODELS.primary.costs : VIDEO_MODELS.fallback.costs;
-  return (costs as Record<string, number>)[key] ?? 0.08;
+export function getResolution(priceCents: number): '480p' | '720p' {
+  return priceCents >= 198 ? '720p' : '480p';
 }

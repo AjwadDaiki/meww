@@ -48,6 +48,7 @@ export interface IOrder {
     };
     duration: 5 | 10 | 15;
     style: 'amateur' | 'doorbell' | 'broadcast' | 'cinematic';
+    sound: boolean;
   };
 
   bundle: Bundle;
@@ -132,6 +133,7 @@ const OrderSchema = new Schema<IOrder>(
       },
       duration: { type: Number, enum: [5, 10, 15], default: 5 },
       style: { type: String, enum: ['amateur', 'doorbell', 'broadcast', 'cinematic'], default: 'amateur' },
+      sound: { type: Boolean, default: false },
     },
 
     bundle: { type: String, enum: BUNDLES, default: 'single' },
