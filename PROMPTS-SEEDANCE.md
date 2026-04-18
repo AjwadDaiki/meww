@@ -1,8 +1,38 @@
 # MeowReel · PROMPTS-SEEDANCE.md
 
-> **Fichier autorité pour tous les prompts Seedance 2.0 de génération vidéo.**
-> Les prompts ici doivent être copiés tels quels dans le code du worker (GENERATION.md).
-> À chaque génération, on injecte la photo du user en @Image reference + le prompt de la catégorie.
+> **Fichier autorite pour tous les prompts Seedance 2.0 de generation video.**
+> Les prompts ici doivent etre copies tels quels dans le code du worker (GENERATION.md).
+> A chaque generation, on injecte la photo du user en @Image reference + le prompt de la categorie.
+
+---
+
+## 0. REGLE CRITIQUE : AMATEUR AUTHENTICITY > CINEMATIC POLISH
+
+Les videos virales TikTok de chats qui font des trucs impossibles fonctionnent parce qu'elles IMITENT des videos amateur. Pas du cinema. Pas de drone. Pas de lighting de studio.
+
+**La formule virale :**
+- Decor 100% banal et reconnaissable (gym, cuisine, porch suburbain)
+- Eclairage naturel ambiant (pas de mood light, pas de studio lighting)
+- Presence humaine partielle (bras, main, jambe en bord de cadre) = signe de credibilite "c'est chez moi"
+- Camera iPhone handheld medium shot, pas de dolly, pas de crane, pas de steadicam
+- Vetements basiques sur le chat (t-shirt simple qui CACHE les pattes = astuce pratique pour eviter les artifacts)
+- Expression chat neutre concentree, pas exageree
+- Absurdite vient de l'ACTION, pas du traitement visuel
+
+**Remplacements obligatoires dans tous les prompts :**
+- "cinematic" -> "handheld iPhone footage"
+- "dramatic lighting" -> "natural ambient lighting"
+- "Netflix doc style" -> "home video authenticity"
+- "film grain" -> "raw phone camera"
+- "mood lighting" -> "overhead fluorescent / natural daylight"
+- "professional camera" -> "smartphone held by friend"
+
+**Ce qui fait qu'on y croit :**
+1. Le decor est un endroit ou on a TOUS ete (gym, cuisine, porch)
+2. La camera est tenue par un pote qui filme (pas un cameraman)
+3. Un bout d'humain est visible (preuve que quelqu'un filme)
+4. Le chat porte un petit vetement simple (cache les pattes = moins d'artifacts)
+5. L'action est absurde mais le traitement est NORMAL
 
 ---
 
@@ -45,12 +75,14 @@ SUBJECT + ACTION + CAMERA + STYLE + TIMELINE
 Tous les prompts MeowReel suivent ce template :
 
 ```
-A photorealistic {CAT_DESCRIPTION_FROM_REFERENCE} {ACTION_VERB} {ACTION_DETAIL}, 
-{ENVIRONMENT_DESCRIPTION}, {LIGHTING_DESCRIPTION}.
-Camera {CAMERA_MOVEMENT}, {SHOT_TYPE}, {ANGLE}.
-{VISUAL_STYLE}, {COLOR_GRADE}, {TEXTURE_DETAIL}.
-Single cat in frame, no humans, no text, no watermark.
-5 seconds, smooth realistic motion.
+A photorealistic {CAT_DESCRIPTION_FROM_REFERENCE} wearing {SIMPLE_CLOTHING},
+{ACTION_VERB} {ACTION_DETAIL}, 
+{BANAL_ENVIRONMENT_DESCRIPTION}, {NATURAL_LIGHTING}.
+Camera handheld iPhone medium shot, {ANGLE}, slight natural shake.
+Raw smartphone footage, no color grading, no filters, {AMBIENT_LIGHT_TYPE},
+home video authenticity.
+Human arm/hand partially visible at frame edge.
+5 seconds, 9:16 vertical.
 ```
 
 **Avec `@Image reference`** (la photo du chat du user) :
@@ -58,24 +90,29 @@ Single cat in frame, no humans, no text, no watermark.
 ```
 @Image 1: reference photo of the cat (preserve fur color, eye color, breed)
 
-Animate the cat from reference image 1, {ACTION_DETAIL}, 
-{ENVIRONMENT_DESCRIPTION}, {LIGHTING_DESCRIPTION}.
-Camera {CAMERA_MOVEMENT}, {SHOT_TYPE}.
+Animate the cat from reference image 1 wearing {SIMPLE_CLOTHING},
+{ACTION_DETAIL}, 
+{BANAL_ENVIRONMENT}, {NATURAL_LIGHTING}.
+Camera handheld iPhone medium shot, slight natural shake.
 Preserve cat identity (fur pattern, face markings, eye color).
-{VISUAL_STYLE}, {COLOR_GRADE}.
-No humans, no text, no watermark, realistic physics.
-5 seconds.
+Raw smartphone footage, natural ambient lighting, no filters.
+Human arm partially visible at frame edge for credibility.
+5 seconds, 9:16 vertical portrait.
 ```
 
-### Negative prompt (commun à TOUS les prompts MeowReel)
+### Negative prompt (commun a TOUS les prompts MeowReel)
 
 ```
-no humans, no text overlays, no watermark, no logos, 
+no full human body visible, no human face visible, 
+no text overlays, no watermark, no logos, 
 no distorted anatomy, no extra limbs, no extra paws, 
 no blurry motion, no cartoon style, no anime style, 
 no 3D render look, no uncanny valley, no floating objects, 
-no glitches, no artifacts, no multiple cats, no disappearing cat
+no glitches, no artifacts, no multiple cats, no disappearing cat,
+no cinematic color grading, no studio lighting
 ```
+
+Note : les bras/mains humains partiellement visibles en bord de cadre sont SOUHAITES (credibilite amateur). Seuls les visages et corps complets humains sont interdits.
 
 ---
 
@@ -83,22 +120,27 @@ no glitches, no artifacts, no multiple cats, no disappearing cat
 
 ### SECTION TRENDING (6 prompts, priorité 1 — ce qui marche MAINTENANT sur TikTok)
 
-#### 01. `midnight-porch-musician` (LE trend Sora 2, 6M+ vues)
+#### 01. `midnight-porch-musician` (LE trend Sora 2, 6M+ vues — version amateur)
 
 ```
-Animate the cat from reference image 1 as it sits upright on a dimly lit 
-suburban porch at 3AM, playing a tiny golden trumpet with its paws, 
-slowly bobbing its head to an imaginary rhythm.
-The porch light glows warm amber, casting long shadows. Suburban houses 
-visible in the blurred background, one window flickers blue from a TV.
-Camera static fisheye angle from the doorbell camera height (about 4 feet 
-up), slight lens distortion at edges.
-Grainy security camera aesthetic, timestamp "03:47 TUE" visible in bottom 
-right corner, date "APR-14-2026" top left. Slight chromatic aberration, 
-infrared-tinted night shadows, warm porch light contrast.
-Low resolution 720p feel, slight motion blur when cat moves.
-Preserve cat fur color and face markings from reference.
-5 seconds, single cat in frame, no humans.
+Animate the cat from reference image 1 sitting upright on a suburban 
+porch at night, holding a tiny golden trumpet with its front paws, 
+slowly bobbing its head side to side as if playing a melody, wearing 
+nothing, neutral focused expression.
+Standard suburban porch with warm amber porch light overhead, concrete 
+steps, a doormat, suburban houses visible across the street in darkness, 
+one window flickering blue from a TV, a human in pajama pants partially 
+visible standing on the right side of the frame watching the cat.
+Camera static fisheye wide angle from doorbell camera height about 4 
+feet up, strong fisheye lens distortion at edges making the cat's face 
+slightly enlarged at center.
+Doorbell security camera aesthetic, timestamp "03:47 TUE" visible in 
+bottom right corner, date "APR-14-2026" in top left, grainy low 
+resolution night footage, slight green infrared tint on shadows, warm 
+amber porch light contrast, chromatic aberration around cat fur edges, 
+motion activated recording feel.
+Preserve cat fur color and face markings from reference image.
+5 seconds, doorbell camera perspective, human legs partially visible.
 ```
 
 #### 02. `ring-doorbell-chaos`
@@ -488,23 +530,28 @@ Preserve cat identity from reference.
 
 ### SECTION DANCE (6 prompts — les plus TikTok-native)
 
-#### 23. `griddy-gym` 🏋️ (LE prompt que tu m'as demandé)
+#### 23. `griddy-gym` (version virale amateur authentique)
 
 ```
 Animate the cat from reference image 1 doing the Griddy dance in a 
-bright modern gym, standing on hind legs, arms (front paws) extended in 
-the classic Griddy pose with paws held like binoculars over eyes, then 
-swinging side to side rhythmically, wearing tiny athletic wear, sweaty fur.
-Modern gym interior, mirrors along one wall reflecting the cat, weight 
-racks visible in background, treadmills in blurred background, bright 
-overhead lights, rubber floor mats, water bottle nearby.
-Camera medium shot at eye level from the front, handheld smartphone 
-style, slight natural sway.
-Gym vlog aesthetic, bright natural-feeling lighting, iPhone 15 Pro video 
-quality, 4K vertical portrait feel, slight motion blur during dance 
-moves, crisp focus on cat, TikTok content creator production value.
-Preserve cat fur color and markings from reference.
-5 seconds, single cat dancing Griddy, no humans visible.
+basic commercial gym, standing upright on hind legs wearing a plain 
+gray oversized t-shirt that covers its front paws, the cat holds its 
+paws up near its eyes in the classic Griddy binocular pose then sways 
+side to side rhythmically with a focused neutral expression.
+Standard gym interior with harsh fluorescent overhead lighting, rubber 
+floor mats, weight rack with mismatched plates visible behind, a human 
+arm holding a phone partially visible on the right edge of the frame, 
+water bottle on the floor nearby, other gym equipment slightly blurred 
+in background.
+Camera handheld iPhone medium shot at eye level, slight natural shake 
+and sway as if a friend is filming while trying not to laugh, vertical 
+9:16 portrait orientation.
+Raw smartphone footage look, no color grading, no filters, natural 
+harsh gym fluorescent lighting with slight green tint, slight motion 
+blur during fast dance moves, crisp autofocus on cat.
+Preserve cat fur color and face markings from reference image.
+5 seconds, single cat doing Griddy, human arm partially visible at 
+frame edge, home video authenticity.
 ```
 
 #### 24. `tiktok-dance-trend`
@@ -749,25 +796,27 @@ Preserve cat fur color and markings from reference.
 5 seconds, single cat hero, no humans.
 ```
 
-#### 37. `cat-cooking-michelin` 👨‍🍳 (LE prompt que tu m'as demandé)
+#### 37. `cat-cooking-realistic` (version amateur cuisine maison)
 
 ```
-Animate the cat from reference image 1 standing on hind legs at a 
-professional kitchen stove, wearing a tiny white chef's hat and apron, 
-flipping a sautéing pan with both paws, flames erupting dramatically, 
-focused chef expression.
-Professional Michelin-star restaurant kitchen, stainless steel 
-equipment, hanging copper pans, warm ambient lighting from pendant 
-lights, other kitchen stations blurred in background, prep ingredients 
-visible.
-Camera medium close-up at slight low angle, slow dolly push-in, 
-handheld food documentary feel.
-Chef's Table Netflix aesthetic, warm kitchen lighting with dramatic 
-accent shadows, shallow depth of field, 4K food documentary quality, 
-appetizing color grade, lens flare from flames, slight slow motion on 
-the flip.
-Preserve cat identity and fur color from reference.
-5 seconds, single cat chef, no humans.
+Animate the cat from reference image 1 standing upright on hind legs 
+at a regular home kitchen counter next to the sink, wearing a plain 
+oversized t-shirt that covers its front paws, the cat stirs a pot on 
+the stove with a wooden spoon held in one paw, focused neutral 
+expression looking down at the pot.
+Basic home kitchen with standard white cabinets, cluttered countertop 
+with spice jars and a cutting board, dish soap by the sink, fridge 
+with magnets partially visible on the left, a human arm reaching in 
+from the right side of the frame as if handing the cat an ingredient.
+Camera handheld iPhone medium shot from across the kitchen counter, 
+slight shake and autofocus hunting, vertical 9:16 portrait, filmed 
+by someone standing a few feet away.
+Natural kitchen lighting from overhead fluorescent and window daylight, 
+no color grading, no filters, raw smartphone footage, slight 
+overexposure from window light, home video authenticity.
+Preserve cat fur color and face markings from reference image.
+5 seconds, single cat cooking, human arm partially visible, no chef 
+hat, no professional kitchen, no Netflix aesthetic.
 ```
 
 ---
