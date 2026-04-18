@@ -1,5 +1,6 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getTranslations } from 'next-intl/server';
+import { LandingClient } from './landing-client';
 
 type HomePageProps = {
   params: Promise<{ locale: string }>;
@@ -18,14 +19,5 @@ export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  // Phase 3: full landing page will replace this
-  return (
-    <main>
-      <div className="min-h-screen flex items-center justify-center">
-        <h1 className="pop-title font-[family-name:var(--font-anton)] text-6xl">
-          MEOWREEL
-        </h1>
-      </div>
-    </main>
-  );
+  return <LandingClient />;
 }
