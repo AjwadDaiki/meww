@@ -1,159 +1,159 @@
 @import "tailwindcss";
 
 /*
- * MeowReel Y2K Design System
- * Source of truth: DESIGN2.md
+ * MeowReel Y2K Tabloid Scrapbook Design System
+ * Source of truth: DESIGN3.md (DESIGN.md canonical copy)
+ * Palette: Pop acide 2001 — Lisa Frank × Sassy Magazine × MTV 2003
  */
 
 @theme {
-  /* Hero saturated */
-  --color-mr-pink-hot: #FF3EA5;
-  --color-mr-pink-soft: #FFB8D9;
-  --color-mr-peach: #FFA07A;
-  --color-mr-orange-tang: #FF7A3C;
-  --color-mr-yellow-pop: #FFED4A;
-  --color-mr-yellow-gold: #F5C842;
-  --color-mr-cyan-dream: #7DDFFB;
-  --color-mr-violet-deep: #6B3FA0;
-  --color-mr-lavender: #B8A5E3;
-  --color-mr-green-mint: #A8E6CF;
+  /* Primaires pop acide */
+  --color-mr-pink-shock: #FF1E8E;
+  --color-mr-pink-bubblegum: #FF6BB5;
+  --color-mr-yellow-fluo: #FFEE00;
+  --color-mr-yellow-canary: #FFD700;
+  --color-mr-cyan-pool: #00D9F5;
+  --color-mr-cyan-electric: #1EFFFF;
+  --color-mr-green-apple: #5CFF3C;
+  --color-mr-green-mint: #A8FFCE;
+  --color-mr-red-tomato: #FF3020;
+  --color-mr-orange-neon: #FF7A00;
+  --color-mr-purple-grape: #A020F0;
+  --color-mr-lavender-pop: #D9A3FF;
 
-  /* Warm neutrals */
-  --color-mr-cream: #FFF4E0;
-  --color-mr-black-soft: #1A1324;
-  --color-mr-white-pure: #FFFFFF;
+  /* Papier & textures */
+  --color-mr-paper-aged: #F4E6C2;
+  --color-mr-paper-white: #FBF7EC;
+  --color-mr-paper-cream: #F8EED9;
+  --color-mr-paper-kraft: #C9A876;
+  --color-mr-paper-stain: #D4B87A;
 
-  /* CTA */
-  --color-mr-red-love: #FF3B47;
+  /* Neutres chaleureux */
+  --color-mr-black-ink: #0A0811;
+  --color-mr-ink-blue: #1A2E8C;
+  --color-mr-ink-red: #D91424;
 
-  /* LCD */
-  --color-mr-lcd-bg: #F5E8FF;
-  --color-mr-lcd-border: #1A1324;
+  /* Chrome & metallic */
+  --color-mr-chrome-silver: #C8D3E8;
+  --color-mr-chrome-gold: #FFD840;
 
-  /* Fonts */
-  --font-display: "Cormorant Garamond", "Georgia", serif;
-  --font-bold: "Anton", "Bebas Neue", sans-serif;
-  --font-pixel: "Silkscreen", "Press Start 2P", monospace;
+  /* Font families */
+  --font-tabloid: "Anton", "Impact", "Oswald", sans-serif;
+  --font-display-italic: "Playfair Display", "Cormorant Garamond", serif;
   --font-chrome: "Orbitron", "Exo 2", sans-serif;
-  --font-body: "Inter", -apple-system, sans-serif;
   --font-handwritten: "Caveat", "Shadows Into Light", cursive;
+  --font-handwritten-bold: "Permanent Marker", "Rock Salt", cursive;
+  --font-pixel: "Silkscreen", "Press Start 2P", monospace;
+  --font-body: "Inter", -apple-system, sans-serif;
 
   /* Easing */
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-:root {
-  /* Tamagotchi plastic (rgba needs raw vars) */
-  --mr-plastic-pink: rgba(255, 180, 210, 0.85);
-  --mr-plastic-yellow: rgba(255, 230, 130, 0.85);
-  --mr-plastic-blue: rgba(180, 220, 255, 0.85);
-}
-
 html {
-  scroll-behavior: smooth;
   color-scheme: light;
 }
 
 body {
   font-family: var(--font-body);
-  color: var(--color-mr-black-soft);
-  background-color: var(--color-mr-black-soft);
+  color: var(--color-mr-black-ink);
+  background-color: var(--color-mr-paper-aged);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow: hidden;
+  height: 100dvh;
+  margin: 0;
 }
 
-/* ========== Y2K Utilities ========== */
+/* ========== Text Effects (DESIGN3.md section 4.3) ========== */
 
-/* Chrome text effect — metallic 3D */
+/* Hero title: outline thick + shadow offset */
+.title-pop {
+  color: var(--color-mr-yellow-fluo);
+  -webkit-text-stroke: 4px var(--color-mr-black-ink);
+  paint-order: stroke fill;
+  text-shadow:
+    6px 6px 0 var(--color-mr-pink-shock),
+    8px 8px 0 var(--color-mr-black-ink);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+}
+
+/* Chrome 3D metallic text */
 .chrome-text {
   background: linear-gradient(180deg,
     #FFFFFF 0%,
-    #C8D3E8 30%,
-    #5A6B85 50%,
-    #2A3445 60%,
-    #5A6B85 75%,
-    #C8D3E8 90%,
+    #C8D3E8 25%,
+    #4A5A75 45%,
+    #1A2438 55%,
+    #4A5A75 70%,
+    #C8D3E8 85%,
     #FFFFFF 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   text-shadow:
-    1px 1px 0 rgba(0,0,0,0.4),
-    2px 2px 0 var(--color-mr-pink-hot),
-    3px 3px 0 rgba(0,0,0,0.3);
+    2px 2px 0 rgba(0,0,0,0.3),
+    4px 4px 0 var(--color-mr-pink-shock);
   font-style: italic;
   letter-spacing: -0.02em;
+  font-weight: 900;
 }
 
-/* Pop title — bold outline text */
-.pop-title {
-  color: var(--color-mr-yellow-pop);
-  -webkit-text-stroke: 3px var(--color-mr-black-soft);
-  paint-order: stroke fill;
-  text-shadow:
-    4px 4px 0 var(--color-mr-pink-hot),
-    6px 6px 0 var(--color-mr-black-soft);
+/* Highlighter effect for key words */
+.highlighter {
+  background: linear-gradient(180deg,
+    transparent 60%,
+    var(--color-mr-yellow-fluo) 60%,
+    var(--color-mr-yellow-fluo) 90%,
+    transparent 90%);
+  padding: 0 0.1em;
 }
 
-/* Pixel progress bar */
-.pixel-bar {
-  font-family: var(--font-pixel);
-  font-size: 0.65rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+/* ========== Animations ========== */
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* LCD screen background */
-.lcd-screen {
-  background-color: var(--color-mr-lcd-bg);
-  border: 3px solid var(--color-mr-lcd-border);
-  border-radius: 12px;
+@keyframes wiggle {
+  0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0); }
+  50% { transform: rotate(calc(var(--rot, 0deg) + 2deg)) translateY(-3px); }
 }
 
-/* Tamagotchi plastic frame */
-.tamagotchi-frame {
-  border-radius: 24px;
-  padding: 12px;
-  position: relative;
-  overflow: hidden;
-}
-.tamagotchi-frame::before {
-  content: '';
-  position: absolute;
-  top: 8px;
-  left: 15%;
-  width: 70%;
-  height: 30%;
-  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
-  border-radius: 50%;
-  pointer-events: none;
+@keyframes cta-pulse {
+  0%, 100% { transform: rotate(-1deg) scale(1); }
+  50% { transform: rotate(-1deg) scale(1.04); }
 }
 
-/* Grain noise overlay */
+@keyframes confetti-fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(80vh) rotate(720deg); opacity: 0; }
+}
+
+.animate-cta-pulse {
+  animation: cta-pulse 2s ease-in-out infinite;
+}
+
+/* ========== Utilities ========== */
+
+/* Grain noise overlay (applied to body via ::after) */
 .grain-overlay::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px;
   z-index: 9999;
 }
 
-/* Vignette */
-.vignette::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 60%, rgba(26,19,36,0.15) 100%);
-  z-index: 9998;
-}
-
-/* Scrollbar hide */
+/* Scrollbar hide for carousels */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -162,45 +162,25 @@ body {
   display: none;
 }
 
-/* CTA pulse animation */
-@keyframes cta-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-}
-.animate-cta-pulse {
-  animation: cta-pulse 2s ease-in-out infinite;
-}
-
-/* Sparkle twinkle */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(0.8); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-/* Blob float */
-@keyframes blob-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -20px) scale(1.05); }
-  66% { transform: translate(-20px, 15px) scale(0.95); }
-}
-
-/* Gradient pulse background */
-@keyframes gradient-pulse {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-/* Wiggle for hover */
-@keyframes wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-2deg); }
-  75% { transform: rotate(2deg); }
-}
-
-/* Confetti fall */
-@keyframes confetti-fall {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(80vh) rotate(720deg); opacity: 0; }
+/* Torn paper clip-path mixin via CSS custom property */
+.torn-edges {
+  clip-path: polygon(
+    2% 0%, 5% 2%, 8% 0%, 12% 1%, 15% 0%, 18% 2%, 22% 0%, 25% 1%,
+    28% 0%, 32% 2%, 35% 0%, 38% 1%, 42% 0%, 45% 2%, 48% 0%, 52% 1%,
+    55% 0%, 58% 2%, 62% 0%, 65% 1%, 68% 0%, 72% 2%, 75% 0%, 78% 1%,
+    82% 0%, 85% 2%, 88% 0%, 92% 1%, 95% 0%, 98% 2%, 100% 0%,
+    100% 2%, 98% 5%, 100% 8%, 99% 12%, 100% 15%, 98% 18%, 100% 22%,
+    99% 28%, 100% 35%, 98% 42%, 100% 48%, 99% 55%, 100% 62%, 98% 68%,
+    100% 75%, 99% 82%, 100% 88%, 98% 95%, 100% 98%,
+    98% 100%, 95% 98%, 92% 100%, 88% 99%, 85% 100%, 82% 98%,
+    78% 100%, 75% 99%, 72% 100%, 68% 98%, 65% 100%, 62% 99%,
+    58% 100%, 55% 98%, 52% 100%, 48% 99%, 45% 100%, 42% 98%,
+    38% 100%, 35% 99%, 32% 100%, 28% 98%, 25% 100%, 22% 99%,
+    18% 100%, 15% 98%, 12% 100%, 8% 99%, 5% 100%, 2% 98%, 0% 100%,
+    0% 98%, 2% 95%, 0% 92%, 1% 88%, 0% 85%, 2% 82%,
+    0% 78%, 1% 72%, 0% 65%, 2% 58%, 0% 52%, 1% 45%,
+    0% 38%, 2% 32%, 0% 25%, 1% 18%, 0% 12%, 2% 5%
+  );
 }
 
 /* Reduced motion */

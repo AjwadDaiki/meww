@@ -5,29 +5,16 @@ import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import {
-  Caveat,
-  Cormorant_Garamond,
   Anton,
-  Orbitron,
+  Playfair_Display,
+  Caveat,
+  Permanent_Marker,
   Silkscreen,
+  Orbitron,
   Inter,
 } from 'next/font/google';
 import { locales } from '@/lib/i18n/config';
 import '@/app/globals.css';
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  variable: '--font-caveat',
-  display: 'swap',
-});
-
-const cormorant = Cormorant_Garamond({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-cormorant',
-  display: 'swap',
-});
 
 const anton = Anton({
   subsets: ['latin'],
@@ -36,10 +23,24 @@ const anton = Anton({
   display: 'swap',
 });
 
-const orbitron = Orbitron({
+const playfair = Playfair_Display({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-orbitron',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  subsets: ['latin'],
+  variable: '--font-caveat',
+  display: 'swap',
+});
+
+const permanentMarker = Permanent_Marker({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-permanent-marker',
   display: 'swap',
 });
 
@@ -47,6 +48,13 @@ const silkscreen = Silkscreen({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-silkscreen',
+  display: 'swap',
+});
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-orbitron',
   display: 'swap',
 });
 
@@ -78,9 +86,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html
       lang={locale}
-      className={`${caveat.variable} ${cormorant.variable} ${anton.variable} ${orbitron.variable} ${silkscreen.variable} ${inter.variable}`}
+      className={`${anton.variable} ${playfair.variable} ${caveat.variable} ${permanentMarker.variable} ${silkscreen.variable} ${orbitron.variable} ${inter.variable}`}
     >
-      <body className="min-h-screen overflow-x-hidden grain-overlay vignette">
+      <body className="grain-overlay">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
