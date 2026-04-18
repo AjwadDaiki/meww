@@ -4,7 +4,14 @@ import { hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { Caveat, Cormorant_Garamond, Special_Elite } from 'next/font/google';
+import {
+  Caveat,
+  Cormorant_Garamond,
+  Anton,
+  Orbitron,
+  Silkscreen,
+  Inter,
+} from 'next/font/google';
 import { locales } from '@/lib/i18n/config';
 import '@/app/globals.css';
 
@@ -22,10 +29,30 @@ const cormorant = Cormorant_Garamond({
   display: 'swap',
 });
 
-const specialElite = Special_Elite({
+const anton = Anton({
   subsets: ['latin'],
   weight: '400',
-  variable: '--font-special-elite',
+  variable: '--font-anton',
+  display: 'swap',
+});
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+  variable: '--font-orbitron',
+  display: 'swap',
+});
+
+const silkscreen = Silkscreen({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-silkscreen',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -51,9 +78,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html
       lang={locale}
-      className={`${caveat.variable} ${cormorant.variable} ${specialElite.variable}`}
+      className={`${caveat.variable} ${cormorant.variable} ${anton.variable} ${orbitron.variable} ${silkscreen.variable} ${inter.variable}`}
     >
-      <body className="min-h-screen overflow-x-hidden">
+      <body className="min-h-screen overflow-x-hidden grain-overlay vignette">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

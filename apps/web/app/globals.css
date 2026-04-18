@@ -1,61 +1,53 @@
 @import "tailwindcss";
 
 /*
- * MeowReel Design System — CSS Variables
- * Source of truth: DESIGN.md
+ * MeowReel Y2K Design System
+ * Source of truth: DESIGN2.md
  */
 
 @theme {
-  /* Background bureau */
-  --color-mr-wood-dark: #5a3a1f;
-  --color-mr-wood-mid: #9c6b34;
-  --color-mr-wood-light: #c49764;
-  --color-mr-cork: #a07846;
+  /* Hero saturated */
+  --color-mr-pink-hot: #FF3EA5;
+  --color-mr-pink-soft: #FFB8D9;
+  --color-mr-peach: #FFA07A;
+  --color-mr-orange-tang: #FF7A3C;
+  --color-mr-yellow-pop: #FFED4A;
+  --color-mr-yellow-gold: #F5C842;
+  --color-mr-cyan-dream: #7DDFFB;
+  --color-mr-violet-deep: #6B3FA0;
+  --color-mr-lavender: #B8A5E3;
+  --color-mr-green-mint: #A8E6CF;
 
-  /* Papier et surfaces */
-  --color-mr-paper: #f4ead5;
-  --color-mr-paper-aged: #ebdfc4;
-  --color-mr-paper-shadow: #d9c9a8;
+  /* Warm neutrals */
+  --color-mr-cream: #FFF4E0;
+  --color-mr-black-soft: #1A1324;
+  --color-mr-white-pure: #FFFFFF;
 
-  /* Encres et stylos */
-  --color-mr-ink: #1a1614;
-  --color-mr-ink-blue: #2b4a6f;
-  --color-mr-ink-red: #d63e1d;
+  /* CTA */
+  --color-mr-red-love: #FF3B47;
 
-  /* Post-its et accents */
-  --color-mr-postit: #f4d56a;
-  --color-mr-postit-pink: #e8a5c0;
-
-  /* Etats UI */
-  --color-mr-stamp-red: #a82a1c;
-  --color-mr-stamp-green: #4a6b3a;
+  /* LCD */
+  --color-mr-lcd-bg: #F5E8FF;
+  --color-mr-lcd-border: #1A1324;
 
   /* Fonts */
-  --font-handwritten: "Caveat", "Homemade Apple", cursive;
   --font-display: "Cormorant Garamond", "Georgia", serif;
-  --font-typewriter: "Special Elite", "Courier Prime", monospace;
+  --font-bold: "Anton", "Bebas Neue", sans-serif;
+  --font-pixel: "Silkscreen", "Press Start 2P", monospace;
+  --font-chrome: "Orbitron", "Exo 2", sans-serif;
   --font-body: "Inter", -apple-system, sans-serif;
+  --font-handwritten: "Caveat", "Shadows Into Light", cursive;
 
-  /* Easing from DESIGN.md */
-  --ease-tactile: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* Easing */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 :root {
-  /* Raw CSS variables for non-Tailwind usage */
-  --mr-wood-dark: #5a3a1f;
-  --mr-wood-mid: #9c6b34;
-  --mr-wood-light: #c49764;
-  --mr-cork: #a07846;
-  --mr-paper: #f4ead5;
-  --mr-paper-aged: #ebdfc4;
-  --mr-paper-shadow: #d9c9a8;
-  --mr-ink: #1a1614;
-  --mr-ink-blue: #2b4a6f;
-  --mr-ink-red: #d63e1d;
-  --mr-postit: #f4d56a;
-  --mr-postit-pink: #e8a5c0;
-  --mr-stamp-red: #a82a1c;
-  --mr-stamp-green: #4a6b3a;
+  /* Tamagotchi plastic (rgba needs raw vars) */
+  --mr-plastic-pink: rgba(255, 180, 210, 0.85);
+  --mr-plastic-yellow: rgba(255, 230, 130, 0.85);
+  --mr-plastic-blue: rgba(180, 220, 255, 0.85);
 }
 
 html {
@@ -65,17 +57,150 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--mr-ink);
-  background-color: var(--mr-wood-mid);
+  color: var(--color-mr-black-soft);
+  background-color: var(--color-mr-black-soft);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Hide scrollbar for horizontal carousels */
+/* ========== Y2K Utilities ========== */
+
+/* Chrome text effect — metallic 3D */
+.chrome-text {
+  background: linear-gradient(180deg,
+    #FFFFFF 0%,
+    #C8D3E8 30%,
+    #5A6B85 50%,
+    #2A3445 60%,
+    #5A6B85 75%,
+    #C8D3E8 90%,
+    #FFFFFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.4),
+    2px 2px 0 var(--color-mr-pink-hot),
+    3px 3px 0 rgba(0,0,0,0.3);
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+/* Pop title — bold outline text */
+.pop-title {
+  color: var(--color-mr-yellow-pop);
+  -webkit-text-stroke: 3px var(--color-mr-black-soft);
+  paint-order: stroke fill;
+  text-shadow:
+    4px 4px 0 var(--color-mr-pink-hot),
+    6px 6px 0 var(--color-mr-black-soft);
+}
+
+/* Pixel progress bar */
+.pixel-bar {
+  font-family: var(--font-pixel);
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* LCD screen background */
+.lcd-screen {
+  background-color: var(--color-mr-lcd-bg);
+  border: 3px solid var(--color-mr-lcd-border);
+  border-radius: 12px;
+}
+
+/* Tamagotchi plastic frame */
+.tamagotchi-frame {
+  border-radius: 24px;
+  padding: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.tamagotchi-frame::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 15%;
+  width: 70%;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Grain noise overlay */
+.grain-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  z-index: 9999;
+}
+
+/* Vignette */
+.vignette::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(26,19,36,0.15) 100%);
+  z-index: 9998;
+}
+
+/* Scrollbar hide */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* CTA pulse animation */
+@keyframes cta-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+.animate-cta-pulse {
+  animation: cta-pulse 2s ease-in-out infinite;
+}
+
+/* Sparkle twinkle */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Blob float */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+/* Gradient pulse background */
+@keyframes gradient-pulse {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Wiggle for hover */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-2deg); }
+  75% { transform: rotate(2deg); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-cta-pulse,
+  [style*="animation"] {
+    animation: none !important;
+  }
 }
