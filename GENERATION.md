@@ -26,34 +26,44 @@
 
 ## Choix du modèle
 
-### Tier par défaut (99% des cas)
+### Modele choisi : Seedance 2 Lite
 
-**`bytedance/seedance-2.0-fast`** (Replicate)
-- Durée : 5s
-- Résolution : 720p
-- Coût : ~$0.05-0.08 par vidéo (estimation basée sur tier Fast)
+**`bytedance/seedance-2-lite`** (Replicate)
+- Duree : 5 secondes
+- Resolution : 720p
+- Aspect ratio : 9:16 (portrait, TikTok-native)
+- Cout : ~$0.05 par video
 - Temps : ~60-90s
-- Qualité : excellente pour I2V, cohérence de personnage top
-- Audio natif : oui (critical pour scènes musicales)
+- Qualite : excellente pour I2V, coherence de personnage top
+- Audio natif : oui (critical pour scenes musicales)
 
-### Fallback (si Seedance Fast fail)
+**Prompts** : voir PROMPTS-SEEDANCE.md (source unique, 41 prompts structures)
+
+**Negative prompt global** (applique a TOUTES les generations) :
+```
+no humans, no text overlays, no watermark, no logos,
+no distorted anatomy, no extra limbs, no extra paws,
+no blurry motion, no cartoon style, no anime style,
+no 3D render look, no uncanny valley, no floating objects,
+no glitches, no artifacts, no multiple cats, no disappearing cat
+```
+
+### Fallback (si Seedance 2 Lite fail)
 
 **`wan-video/wan-2.2-i2v-fast`** (Replicate)
-- Durée : 5s
-- Résolution : 480p / 720p
-- Coût : ~$0.03-0.05 par vidéo
-- Temps : ~40-60s
-- Qualité : bonne, moins premium mais fonctionnelle
-- Audio natif : non (à gérer côté post)
+- Duree : 5s
+- Resolution : 480p / 720p
+- Cout : ~$0.03-0.05 par video
+- Qualite : bonne, moins premium mais fonctionnelle
+- Audio natif : non
 
-### Tier Premium V2 (upsell à 2,99€)
+### Tier Premium V2 (upsell a 2,99EUR)
 
 **`bytedance/seedance-2.0`** (non-fast)
-- Durée : 10s
-- Résolution : 1080p
-- Coût : ~$0.70-1.40 par vidéo
-- Qualité : cinéma
-- Vendu à 2,99€ = marge 50%+
+- Duree : 10s
+- Resolution : 1080p
+- Cout : ~$0.70-1.40 par video
+- Vendu a 2,99EUR = marge 50%+
 
 ---
 
