@@ -1,7 +1,99 @@
 # MeowReel · DESIGN4.md
 
 > **Version finale de la DA. Remplace DESIGN.md, DESIGN2.md, DESIGN3.md.**
-> À lire APRÈS avoir complété l'absorption de MOODBOARD.md.
+> A lire APRES avoir complete l'absorption de MOODBOARD.md.
+
+---
+
+## 0. Verrouillage visuel (ne jamais modifier sans discussion)
+
+Ces 6 regles sont lockees suite a la validation du moodboard (31 refs, SYNTHESIS.md).
+Toute modification necessite discussion explicite avec Ajwad.
+
+### 0.1 RADIAL COLOR BEAMS = le background signature
+
+Pas un gradient radial doux. De vrais RAYONS SATURES qui partent du centre comme sur les pubs Bandai Tamagotchi 2000. 6 a 8 rayons triangulaires de couleurs differentes (rose, jaune, cyan, vert, violet, orange), chacun prenant 30-45 degres de l'ecran, partant d'un point legerement off-center (pas parfait milieu), bords nets ou legerement flous selon le rayon. Le centre contient le chat star polaroid.
+
+NON NEGOCIABLE. Si le background est juste un gradient lisse, c'est rate. On doit voir distinctement les rayons satures.
+
+Implementation technique : SVG conic-gradient ou clip-path triangles, pas linear-gradient plat.
+
+### 0.2 PNJ CHATS = style Lisa Frank strict
+
+Reprise exacte du kitty rainbow Lisa Frank observe dans le moodboard :
+- Contour noir EPAIS : 4-5px minimum
+- Yeux ENORMES : minimum 30% de la surface de la face du chat
+- Highlights blancs dans les yeux : 2-3 points brillants par oeil
+- Bouche petite en forme de "w" inverse ou petit sourire
+- Corps simplifie en 3-4 formes geometriques (tete ronde + corps ovale + queue courbee)
+- Couleurs : 3 max par PNJ (couleur principale + 1 accent + blanc)
+- Pas de shading degrade, cel-shading plate a 2 tons max
+- Paillettes/sparkles INTEGREES au personnage (sur le collier, dans les yeux, autour de la tete)
+
+Test de validite : si on retire le chat et on ne garde que les contours, est-ce qu'on reconnait un chat en silhouette ? Si oui, OK.
+
+### 0.3 DENSITE CIBLE 30+ ELEMENTS MINIMUM
+
+Minimum 30 elements visibles simultanement sur le landing :
+- 6 PNJ chats (4 minimum mobile)
+- 10 stickers rotations random
+- 20 sparkles tailles variees
+- 5 bulles chrome floating
+- 3 GIFs Giphy animes
+- 1 chat star polaroid
+- 1 carrousel 6 categories
+- 1 CTA enorme
+- 1 logo MEOWREEL chrome
+= 53 elements theoriques desktop
+
+Si en audit brand-check on compte moins de 30 elements DISTINCTS a l'ecran, c'est rate.
+
+### 0.4 CHROME TEXT = methode exacte
+
+Pour "MEOWREEL" et autres brands :
+- Gradient lineaire 180 degres avec 6 stops minimum :
+  0% blanc pur, 25% gris clair (#C8D3E8), 45% gris fonce (#4A5A75),
+  55% noir-bleu (#1A2438), 70% gris clair, 90% blanc pur
+- Outline noir 3px
+- Offset shadow double : rose shocking +3/+3, noir +5/+5
+- Italic obligatoire sur le brand name
+- Font : Fredoka pour MEOWREEL (bulle arrondie), sinon Orbitron
+
+Pas de "effet metallique approximatif". Le chrome doit ressembler a du vrai metal poli.
+
+### 0.5 ANIMATIONS 2-4 FRAMES SIMPLES
+
+Pas d'animation complexe fluide. Style sprite anime 2-4 frames :
+- PNJ blink : 2 frames (yeux ouverts / fermes), toggle 3-5s
+- PNJ wave : 3 frames (patte basse / moyenne / haute), cycle 1s
+- Sparkle pop : 4 frames (petit / moyen / grand / disparait), 0.8s
+- Chrome bubble float : continuous translate Y -10px en 3s
+
+Utiliser `steps()` en CSS pour l'effet "old cartoon Bandai". Les micro-imperfections font l'authenticite Y2K.
+
+### 0.6 PALETTE FINALE HEX EXACTS (pas de drift)
+
+Issue de l'analyse des 31 images du moodboard. HEX absolus :
+
+```css
+:root {
+  --mr-rose-tama:      #FF5FA2;  /* rose exact Bandai Tamagotchi */
+  --mr-jaune-candy:    #FFE14B;  /* jaune poussin des ads */
+  --mr-cyan-piscine:   #3EC4E6;  /* bleu Tamagotchi Connection */
+  --mr-vert-apple:     #7FD957;  /* vert Lisa Frank signature */
+  --mr-orange-pop:     #FF8C42;  /* orange explosif radial beams */
+  --mr-violet-grape:   #B565E8;  /* violet sparkle */
+  --mr-rouge-cerise:   #FF4757;  /* CTA urgence */
+
+  --mr-papier-gloss:   #FFFEF8;  /* pas jauni, brillant gloss magazine */
+  --mr-noir-encre:     #0A0811;  /* outlines */
+
+  /* Chrome argent : gradient 6 stops */
+  /* Chrome or : #FFD840 -> #FFAE00 -> #CC8C00 */
+}
+```
+
+Toute variation de ces couleurs doit passer par update de DESIGN4.md. Pas de drift silencieux.
 
 ---
 
