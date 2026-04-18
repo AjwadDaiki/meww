@@ -163,13 +163,20 @@ export function Landing() {
               className="relative bg-mr-papier-gloss p-2 md:p-3 shadow-[8px_8px_0_var(--color-mr-noir-encre)] flex-shrink-0"
               style={{ transform: 'rotate(-3deg)' }}
             >
-              <div className="w-[200px] h-[240px] md:w-[280px] md:h-[340px] bg-mr-violet-grape/20 overflow-hidden relative">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={heroImage}
-                  alt=""
-                  className="w-full h-full object-contain"
-                />
+              <div className="w-[200px] h-[240px] md:w-[280px] md:h-[340px] bg-mr-noir-encre/10 overflow-hidden relative">
+                {photoUrl ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={photoUrl} alt="" className="w-full h-full object-cover" />
+                ) : (
+                  <video
+                    src="/previews/midnight-porch-musician.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
               <p className="font-[family-name:var(--font-playfair)] italic text-sm md:text-base text-center mt-1 text-mr-noir-encre">
                 {heroCaption}
@@ -243,7 +250,16 @@ export function Landing() {
                   } ${currentStep === 'arrival' ? 'opacity-60' : ''}`}
                   style={{ transform: `rotate(${(i % 2 === 0 ? -1 : 1) * (2 + (i % 4))}deg)` }}
                 >
-                  <div className="w-[90px] h-[110px] md:w-[120px] md:h-[150px] bg-mr-cyan-piscine/20" />
+                  <div className="w-[90px] h-[110px] md:w-[120px] md:h-[150px] bg-mr-noir-encre/10 overflow-hidden">
+                    <video
+                      src={`/previews/${cat.slug}.mp4`}
+                      muted
+                      loop
+                      playsInline
+                      autoPlay
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <p className="font-[family-name:var(--font-playfair)] italic text-[9px] md:text-xs text-center mt-0.5 text-mr-noir-encre truncate max-w-[90px] md:max-w-[120px]">
                     {cat.name.fr}
                   </p>
