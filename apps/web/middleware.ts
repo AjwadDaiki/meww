@@ -8,5 +8,5 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/((?!api|_next|favicon.ico|fonts|textures|previews|.well-known).*)'],
+  matcher: ['/((?!api|_next|favicon.ico|fonts|textures|previews|pnj|gifs|stickers|.well-known).*)'],
 };
