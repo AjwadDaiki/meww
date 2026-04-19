@@ -169,6 +169,12 @@ body {
   display: none;
 }
 
+/* Slow spin for background dynamism */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-cta-pulse,
