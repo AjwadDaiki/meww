@@ -7,6 +7,7 @@ import { MrSparkle } from '@/components/ui/mr-sparkle';
 import { MrChromeBubble } from '@/components/ui/mr-chrome-bubble';
 import { MrSticker } from '@/components/stickers/mr-sticker';
 import { useFlowStore } from '@/lib/store/flow-store';
+import { StudioLayout } from '@/components/studio/studio-layout';
 
 type CategoryDoc = {
   _id: string;
@@ -101,11 +102,30 @@ export function Landing() {
     ? t('preview.cta')
     : t('hero.cta');
 
-  // Determine hero image
-  const heroImage = photoUrl || '/pnj/purrpaparazzi-default.png';
+  // Hero videos pool (different cats, different scenes)
+  const heroVideos = [
+    { src: '/previews/midnight-porch-musician.mp4', caption: 'Midnight Porch Musician' },
+    { src: '/previews/football-goal-celebration.mp4', caption: 'Football Goal' },
+    { src: '/previews/disco-70s.mp4', caption: 'Disco 70s' },
+    { src: '/previews/cowboy-far-west.mp4', caption: 'Cowboy Far West' },
+    { src: '/previews/tiktok-dance-trend.mp4', caption: 'TikTok Dance' },
+    { src: '/previews/ninja-night-tokyo.mp4', caption: 'Ninja Night' },
+  ];
+  const [heroIdx] = useState(() => Math.floor(Math.random() * heroVideos.length));
+  const heroVideo = heroVideos[heroIdx];
   const heroCaption = selectedCategory
     ? categories.find((c) => c.slug === selectedCategory)?.name.fr || selectedCategory
-    : 'Midnight Porch Musician';
+    : heroVideo.caption;
+
+  // Show Studio when user has uploaded (state: uploaded, scene-chosen, preview-ready)
+  if (currentStep !== 'arrival') {
+    return (
+      <>
+        <StudioLayout />
+        {/* Upload modal can still be shown on top if needed */}
+      </>
+    );
+  }
 
   return (
     <div className="h-dvh w-screen overflow-hidden relative">
@@ -169,7 +189,7 @@ export function Landing() {
                   <img src={photoUrl} alt="" className="w-full h-full object-cover" />
                 ) : (
                   <video
-                    src="/previews/midnight-porch-musician.mp4"
+                    src={heroVideo.src}
                     autoPlay
                     loop
                     muted
@@ -182,7 +202,7 @@ export function Landing() {
                 {heroCaption}
               </p>
               <div className="absolute -top-3 -right-3">
-                <MrSticker label={currentStep === 'uploaded' ? 'NEW!' : 'HOT!'} color={currentStep === 'uploaded' ? 'cyan' : 'rouge'} size="sm" rotation={15} />
+                <MrSticker label="HOT!" color="rouge" size="sm" rotation={15} />
               </div>
             </div>
 
